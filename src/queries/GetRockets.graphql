@@ -1,0 +1,10 @@
+query GetRockets($limit: Int) {
+  rockets(limit: $limit) {
+    active
+    country
+    description
+    id
+    name
+    wikipedia
+  }
+}

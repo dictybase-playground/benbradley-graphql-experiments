@@ -1,8 +1,0 @@
-type Rocket {
-    id: String!
-    name: String!
-    active: String!
-    country: String!
-    description: String!
-    wikipedia: String!
-}

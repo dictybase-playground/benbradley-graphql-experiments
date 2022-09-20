@@ -13,2566 +13,1358 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  Timestamp: any;
+  Date: any;
+  ObjectID: any;
+  timestamptz: any;
+  uuid: any;
 };
 
-export type AssociatedSequences = {
-  __typename?: 'AssociatedSequences';
-  ests: Array<NameWithLink>;
-  genbank_genomic_fragment?: Maybe<NameWithLink>;
-  genbank_mrna?: Maybe<NameWithLink>;
-  more_link: Scalars['String'];
+export type Address = {
+  __typename?: 'Address';
+  address?: Maybe<Scalars['String']>;
+  city?: Maybe<Scalars['String']>;
+  state?: Maybe<Scalars['String']>;
 };
 
-export type Auth = {
-  __typename?: 'Auth';
-  identity: Identity;
-  token: Scalars['String'];
-  user: User;
-};
-
-export type Author = {
-  __typename?: 'Author';
-  first_name?: Maybe<Scalars['String']>;
-  initials?: Maybe<Scalars['String']>;
-  last_name: Scalars['String'];
-  rank?: Maybe<Scalars['String']>;
-};
-
-export type BasePublication = {
-  abstract: Scalars['String'];
-  authors: Array<Author>;
-  doi?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  issn?: Maybe<Scalars['String']>;
-  issue?: Maybe<Scalars['String']>;
-  journal: Scalars['String'];
-  pages?: Maybe<Scalars['String']>;
-  pub_date?: Maybe<Scalars['Timestamp']>;
-  pub_type: Scalars['String'];
-  source: Scalars['String'];
+export type Capsule = {
+  __typename?: 'Capsule';
+  dragon?: Maybe<Dragon>;
+  id?: Maybe<Scalars['ID']>;
+  landings?: Maybe<Scalars['Int']>;
+  missions?: Maybe<Array<Maybe<CapsuleMission>>>;
+  original_launch?: Maybe<Scalars['Date']>;
+  reuse_count?: Maybe<Scalars['Int']>;
   status?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
-  volume?: Maybe<Scalars['String']>;
+  type?: Maybe<Scalars['String']>;
 };
 
-export type Citation = {
-  __typename?: 'Citation';
-  authors: Scalars['String'];
-  journal: Scalars['String'];
-  pubmed_id: Scalars['String'];
-  title: Scalars['String'];
+export type CapsuleMission = {
+  __typename?: 'CapsuleMission';
+  flight?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
 };
 
-export type Content = {
-  __typename?: 'Content';
-  content: Scalars['String'];
-  created_at: Scalars['Timestamp'];
-  created_by: User;
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  namespace: Scalars['String'];
-  slug: Scalars['String'];
-  updated_at: Scalars['Timestamp'];
-  updated_by: User;
+export type CapsulesFind = {
+  id?: InputMaybe<Scalars['ID']>;
+  landings?: InputMaybe<Scalars['Int']>;
+  mission?: InputMaybe<Scalars['String']>;
+  original_launch?: InputMaybe<Scalars['Date']>;
+  reuse_count?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
+  type?: InputMaybe<Scalars['String']>;
 };
 
-export type CreateContentInput = {
-  content: Scalars['String'];
-  created_by: Scalars['String'];
-  name: Scalars['String'];
-  namespace: Scalars['String'];
+export type Core = {
+  __typename?: 'Core';
+  asds_attempts?: Maybe<Scalars['Int']>;
+  asds_landings?: Maybe<Scalars['Int']>;
+  block?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['ID']>;
+  missions?: Maybe<Array<Maybe<CapsuleMission>>>;
+  original_launch?: Maybe<Scalars['Date']>;
+  reuse_count?: Maybe<Scalars['Int']>;
+  rtls_attempts?: Maybe<Scalars['Int']>;
+  rtls_landings?: Maybe<Scalars['Int']>;
+  status?: Maybe<Scalars['String']>;
+  water_landing?: Maybe<Scalars['Boolean']>;
 };
 
-export type CreateOrderInput = {
-  comments?: InputMaybe<Scalars['String']>;
-  consumer: Scalars['String'];
-  courier: Scalars['String'];
-  courier_account: Scalars['String'];
-  items: Array<Scalars['String']>;
-  payer: Scalars['String'];
-  payment: Scalars['String'];
-  purchase_order_num?: InputMaybe<Scalars['String']>;
-  purchaser: Scalars['String'];
-  status: StatusEnum;
+export type CoreMission = {
+  __typename?: 'CoreMission';
+  flight?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
 };
 
-export type CreatePermissionInput = {
-  description: Scalars['String'];
-  permission: Scalars['String'];
-  resource: Scalars['String'];
+export type CoresFind = {
+  asds_attempts?: InputMaybe<Scalars['Int']>;
+  asds_landings?: InputMaybe<Scalars['Int']>;
+  block?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['String']>;
+  missions?: InputMaybe<Scalars['String']>;
+  original_launch?: InputMaybe<Scalars['Date']>;
+  reuse_count?: InputMaybe<Scalars['Int']>;
+  rtls_attempts?: InputMaybe<Scalars['Int']>;
+  rtls_landings?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
+  water_landing?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type CreatePlasmidInput = {
-  created_by: Scalars['String'];
-  dbxrefs?: InputMaybe<Array<Scalars['String']>>;
-  depositor?: InputMaybe<Scalars['String']>;
-  editable_summary?: InputMaybe<Scalars['String']>;
-  genbank_accession?: InputMaybe<Scalars['String']>;
-  genes?: InputMaybe<Array<Scalars['String']>>;
-  image_map?: InputMaybe<Scalars['String']>;
-  in_stock: Scalars['Boolean'];
-  keywords?: InputMaybe<Array<Scalars['String']>>;
-  name: Scalars['String'];
-  publications?: InputMaybe<Array<Scalars['String']>>;
-  sequence?: InputMaybe<Scalars['String']>;
-  summary?: InputMaybe<Scalars['String']>;
-  updated_by: Scalars['String'];
+export type Distance = {
+  __typename?: 'Distance';
+  feet?: Maybe<Scalars['Float']>;
+  meters?: Maybe<Scalars['Float']>;
 };
 
-export type CreateRoleInput = {
-  description: Scalars['String'];
-  role: Scalars['String'];
+export type Dragon = {
+  __typename?: 'Dragon';
+  active?: Maybe<Scalars['Boolean']>;
+  crew_capacity?: Maybe<Scalars['Int']>;
+  description?: Maybe<Scalars['String']>;
+  diameter?: Maybe<Distance>;
+  dry_mass_kg?: Maybe<Scalars['Int']>;
+  dry_mass_lb?: Maybe<Scalars['Int']>;
+  first_flight?: Maybe<Scalars['String']>;
+  heat_shield?: Maybe<DragonHeatShield>;
+  height_w_trunk?: Maybe<Distance>;
+  id?: Maybe<Scalars['ID']>;
+  launch_payload_mass?: Maybe<Mass>;
+  launch_payload_vol?: Maybe<Volume>;
+  name?: Maybe<Scalars['String']>;
+  orbit_duration_yr?: Maybe<Scalars['Int']>;
+  pressurized_capsule?: Maybe<DragonPressurizedCapsule>;
+  return_payload_mass?: Maybe<Mass>;
+  return_payload_vol?: Maybe<Volume>;
+  sidewall_angle_deg?: Maybe<Scalars['Float']>;
+  thrusters?: Maybe<Array<Maybe<DragonThrust>>>;
+  trunk?: Maybe<DragonTrunk>;
+  type?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
-export type CreateStrainInput = {
-  characteristics?: InputMaybe<Array<Scalars['String']>>;
-  created_by: Scalars['String'];
-  dbxrefs?: InputMaybe<Array<Scalars['String']>>;
-  depositor?: InputMaybe<Scalars['String']>;
-  editable_summary?: InputMaybe<Scalars['String']>;
-  genes?: InputMaybe<Array<Scalars['String']>>;
-  genetic_modification?: InputMaybe<Scalars['String']>;
-  genotypes?: InputMaybe<Array<Scalars['String']>>;
-  in_stock: Scalars['Boolean'];
-  label: Scalars['String'];
-  mutagenesis_method?: InputMaybe<Scalars['String']>;
-  names?: InputMaybe<Array<Scalars['String']>>;
-  parent?: InputMaybe<Scalars['String']>;
-  phenotypes?: InputMaybe<Array<Scalars['String']>>;
-  plasmid?: InputMaybe<Scalars['String']>;
-  publications?: InputMaybe<Array<Scalars['String']>>;
-  species: Scalars['String'];
-  summary?: InputMaybe<Scalars['String']>;
-  systematic_name: Scalars['String'];
-  updated_by: Scalars['String'];
+export type DragonHeatShield = {
+  __typename?: 'DragonHeatShield';
+  dev_partner?: Maybe<Scalars['String']>;
+  material?: Maybe<Scalars['String']>;
+  size_meters?: Maybe<Scalars['Float']>;
+  temp_degrees?: Maybe<Scalars['Int']>;
 };
 
-export type CreateUserInput = {
-  city?: InputMaybe<Scalars['String']>;
-  country?: InputMaybe<Scalars['String']>;
-  email: Scalars['String'];
-  first_address?: InputMaybe<Scalars['String']>;
-  first_name: Scalars['String'];
-  group_name?: InputMaybe<Scalars['String']>;
-  is_active: Scalars['Boolean'];
-  last_name: Scalars['String'];
-  organization?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  second_address?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
-  zipcode?: InputMaybe<Scalars['String']>;
+export type DragonPressurizedCapsule = {
+  __typename?: 'DragonPressurizedCapsule';
+  payload_volume?: Maybe<Volume>;
 };
 
-export type DeleteContent = {
-  __typename?: 'DeleteContent';
-  success: Scalars['Boolean'];
+export type DragonThrust = {
+  __typename?: 'DragonThrust';
+  amount?: Maybe<Scalars['Int']>;
+  fuel_1?: Maybe<Scalars['String']>;
+  fuel_2?: Maybe<Scalars['String']>;
+  pods?: Maybe<Scalars['Int']>;
+  thrust?: Maybe<Force>;
+  type?: Maybe<Scalars['String']>;
 };
 
-export type DeletePermission = {
-  __typename?: 'DeletePermission';
-  success: Scalars['Boolean'];
+export type DragonTrunk = {
+  __typename?: 'DragonTrunk';
+  cargo?: Maybe<DragonTrunkCargo>;
+  trunk_volume?: Maybe<Volume>;
 };
 
-export type DeleteRole = {
-  __typename?: 'DeleteRole';
-  success: Scalars['Boolean'];
+export type DragonTrunkCargo = {
+  __typename?: 'DragonTrunkCargo';
+  solar_array?: Maybe<Scalars['Int']>;
+  unpressurized_cargo?: Maybe<Scalars['Boolean']>;
 };
 
-export type DeleteStock = {
-  __typename?: 'DeleteStock';
-  success: Scalars['Boolean'];
+export type Force = {
+  __typename?: 'Force';
+  kN?: Maybe<Scalars['Float']>;
+  lbf?: Maybe<Scalars['Float']>;
 };
 
-export type DeleteUser = {
-  __typename?: 'DeleteUser';
-  success: Scalars['Boolean'];
+export type HistoriesResult = {
+  __typename?: 'HistoriesResult';
+  data?: Maybe<Array<Maybe<History>>>;
+  result?: Maybe<Result>;
 };
 
-export type Download = {
-  __typename?: 'Download';
-  items: Array<DownloadItem>;
-  title: Scalars['String'];
+export type History = {
+  __typename?: 'History';
+  details?: Maybe<Scalars['String']>;
+  event_date_unix?: Maybe<Scalars['Date']>;
+  event_date_utc?: Maybe<Scalars['Date']>;
+  flight?: Maybe<Launch>;
+  id?: Maybe<Scalars['ID']>;
+  links?: Maybe<Link>;
+  title?: Maybe<Scalars['String']>;
 };
 
-export type DownloadItem = {
-  __typename?: 'DownloadItem';
-  title: Scalars['String'];
-  url: Scalars['String'];
+export type HistoryFind = {
+  end?: InputMaybe<Scalars['Date']>;
+  flight_number?: InputMaybe<Scalars['Int']>;
+  id?: InputMaybe<Scalars['ID']>;
+  start?: InputMaybe<Scalars['Date']>;
 };
 
-export type Extension = {
-  __typename?: 'Extension';
-  db: Scalars['String'];
-  id: Scalars['String'];
-  name: Scalars['String'];
-  relation: Scalars['String'];
+export type Info = {
+  __typename?: 'Info';
+  ceo?: Maybe<Scalars['String']>;
+  coo?: Maybe<Scalars['String']>;
+  cto?: Maybe<Scalars['String']>;
+  cto_propulsion?: Maybe<Scalars['String']>;
+  employees?: Maybe<Scalars['Int']>;
+  founded?: Maybe<Scalars['Int']>;
+  founder?: Maybe<Scalars['String']>;
+  headquarters?: Maybe<Address>;
+  launch_sites?: Maybe<Scalars['Int']>;
+  links?: Maybe<InfoLinks>;
+  name?: Maybe<Scalars['String']>;
+  summary?: Maybe<Scalars['String']>;
+  test_sites?: Maybe<Scalars['Int']>;
+  valuation?: Maybe<Scalars['Float']>;
+  vehicles?: Maybe<Scalars['Int']>;
 };
 
-export type GoAnnotation = {
-  __typename?: 'GOAnnotation';
-  assigned_by: Scalars['String'];
-  date: Scalars['String'];
-  evidence_code: Scalars['String'];
-  extensions?: Maybe<Array<Extension>>;
-  go_term: Scalars['String'];
-  id: Scalars['String'];
-  publication: Scalars['String'];
-  qualifier: Scalars['String'];
-  type: Scalars['String'];
-  with?: Maybe<Array<With>>;
+export type InfoLinks = {
+  __typename?: 'InfoLinks';
+  elon_twitter?: Maybe<Scalars['String']>;
+  flickr?: Maybe<Scalars['String']>;
+  twitter?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
 };
 
-export type Gene = {
-  __typename?: 'Gene';
-  associated_sequences: AssociatedSequences;
-  general_info: GeneralInfo;
-  goas?: Maybe<Array<GoAnnotation>>;
-  id: Scalars['String'];
-  links: Links;
-  name: Scalars['String'];
-  orthologs?: Maybe<Array<Orthologs>>;
-  product_info?: Maybe<Array<ProductInformation>>;
-  protein_information?: Maybe<ProteinInformation>;
-  strains?: Maybe<Array<Strain>>;
+export type Landpad = {
+  __typename?: 'Landpad';
+  attempted_landings?: Maybe<Scalars['String']>;
+  details?: Maybe<Scalars['String']>;
+  full_name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  landing_type?: Maybe<Scalars['String']>;
+  location?: Maybe<Location>;
+  status?: Maybe<Scalars['String']>;
+  successful_landings?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
-export type GeneralInfo = {
-  __typename?: 'GeneralInfo';
-  alt_gene_name?: Maybe<Array<Scalars['String']>>;
-  alt_protein_names?: Maybe<Array<Scalars['String']>>;
-  description: Scalars['String'];
-  gene_product: Scalars['String'];
-  name_description: Array<Scalars['String']>;
+export type Launch = {
+  __typename?: 'Launch';
+  details?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  is_tentative?: Maybe<Scalars['Boolean']>;
+  launch_date_local?: Maybe<Scalars['Date']>;
+  launch_date_unix?: Maybe<Scalars['Date']>;
+  launch_date_utc?: Maybe<Scalars['Date']>;
+  launch_site?: Maybe<LaunchSite>;
+  launch_success?: Maybe<Scalars['Boolean']>;
+  launch_year?: Maybe<Scalars['String']>;
+  links?: Maybe<LaunchLinks>;
+  mission_id?: Maybe<Array<Maybe<Scalars['String']>>>;
+  mission_name?: Maybe<Scalars['String']>;
+  rocket?: Maybe<LaunchRocket>;
+  ships?: Maybe<Array<Maybe<Ship>>>;
+  static_fire_date_unix?: Maybe<Scalars['Date']>;
+  static_fire_date_utc?: Maybe<Scalars['Date']>;
+  telemetry?: Maybe<LaunchTelemetry>;
+  tentative_max_precision?: Maybe<Scalars['String']>;
+  upcoming?: Maybe<Scalars['Boolean']>;
 };
 
-export type GenomicCoordinates = {
-  __typename?: 'GenomicCoordinates';
-  chrom_coords: Scalars['String'];
-  exon: Scalars['String'];
-  local_coords: Scalars['String'];
+export type LaunchFind = {
+  apoapsis_km?: InputMaybe<Scalars['Float']>;
+  block?: InputMaybe<Scalars['Int']>;
+  cap_serial?: InputMaybe<Scalars['String']>;
+  capsule_reuse?: InputMaybe<Scalars['String']>;
+  core_flight?: InputMaybe<Scalars['Int']>;
+  core_reuse?: InputMaybe<Scalars['String']>;
+  core_serial?: InputMaybe<Scalars['String']>;
+  customer?: InputMaybe<Scalars['String']>;
+  eccentricity?: InputMaybe<Scalars['Float']>;
+  end?: InputMaybe<Scalars['Date']>;
+  epoch?: InputMaybe<Scalars['Date']>;
+  fairings_recovered?: InputMaybe<Scalars['String']>;
+  fairings_recovery_attempt?: InputMaybe<Scalars['String']>;
+  fairings_reuse?: InputMaybe<Scalars['String']>;
+  fairings_reused?: InputMaybe<Scalars['String']>;
+  fairings_ship?: InputMaybe<Scalars['String']>;
+  gridfins?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  inclination_deg?: InputMaybe<Scalars['Float']>;
+  land_success?: InputMaybe<Scalars['String']>;
+  landing_intent?: InputMaybe<Scalars['String']>;
+  landing_type?: InputMaybe<Scalars['String']>;
+  landing_vehicle?: InputMaybe<Scalars['String']>;
+  launch_date_local?: InputMaybe<Scalars['Date']>;
+  launch_date_utc?: InputMaybe<Scalars['Date']>;
+  launch_success?: InputMaybe<Scalars['String']>;
+  launch_year?: InputMaybe<Scalars['String']>;
+  legs?: InputMaybe<Scalars['String']>;
+  lifespan_years?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
+  manufacturer?: InputMaybe<Scalars['String']>;
+  mean_motion?: InputMaybe<Scalars['Float']>;
+  mission_id?: InputMaybe<Scalars['String']>;
+  mission_name?: InputMaybe<Scalars['String']>;
+  nationality?: InputMaybe<Scalars['String']>;
+  norad_id?: InputMaybe<Scalars['Int']>;
+  orbit?: InputMaybe<Scalars['String']>;
+  payload_id?: InputMaybe<Scalars['String']>;
+  payload_type?: InputMaybe<Scalars['String']>;
+  periapsis_km?: InputMaybe<Scalars['Float']>;
+  period_min?: InputMaybe<Scalars['Float']>;
+  raan?: InputMaybe<Scalars['Float']>;
+  reference_system?: InputMaybe<Scalars['String']>;
+  regime?: InputMaybe<Scalars['String']>;
+  reused?: InputMaybe<Scalars['String']>;
+  rocket_id?: InputMaybe<Scalars['String']>;
+  rocket_name?: InputMaybe<Scalars['String']>;
+  rocket_type?: InputMaybe<Scalars['String']>;
+  second_stage_block?: InputMaybe<Scalars['String']>;
+  semi_major_axis_km?: InputMaybe<Scalars['Float']>;
+  ship?: InputMaybe<Scalars['String']>;
+  side_core1_reuse?: InputMaybe<Scalars['String']>;
+  side_core2_reuse?: InputMaybe<Scalars['String']>;
+  site_id?: InputMaybe<Scalars['String']>;
+  site_name?: InputMaybe<Scalars['String']>;
+  site_name_long?: InputMaybe<Scalars['String']>;
+  start?: InputMaybe<Scalars['Date']>;
+  tbd?: InputMaybe<Scalars['String']>;
+  tentative?: InputMaybe<Scalars['String']>;
+  tentative_max_precision?: InputMaybe<Scalars['String']>;
 };
 
-export type Identity = {
-  __typename?: 'Identity';
-  created_at: Scalars['Timestamp'];
-  id: Scalars['ID'];
-  identifier: Scalars['String'];
-  provider: Scalars['String'];
-  updated_at: Scalars['Timestamp'];
-  user_id: Scalars['ID'];
+export type LaunchLinks = {
+  __typename?: 'LaunchLinks';
+  article_link?: Maybe<Scalars['String']>;
+  flickr_images?: Maybe<Array<Maybe<Scalars['String']>>>;
+  mission_patch?: Maybe<Scalars['String']>;
+  mission_patch_small?: Maybe<Scalars['String']>;
+  presskit?: Maybe<Scalars['String']>;
+  reddit_campaign?: Maybe<Scalars['String']>;
+  reddit_launch?: Maybe<Scalars['String']>;
+  reddit_media?: Maybe<Scalars['String']>;
+  reddit_recovery?: Maybe<Scalars['String']>;
+  video_link?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
-export type Links = {
-  __typename?: 'Links';
-  colleagues: NameWithLink;
-  expression: Array<NameWithLink>;
-  ext_resources: Array<NameWithLink>;
+export type LaunchRocket = {
+  __typename?: 'LaunchRocket';
+  fairings?: Maybe<LaunchRocketFairings>;
+  first_stage?: Maybe<LaunchRocketFirstStage>;
+  rocket?: Maybe<Rocket>;
+  rocket_name?: Maybe<Scalars['String']>;
+  rocket_type?: Maybe<Scalars['String']>;
+  second_stage?: Maybe<LaunchRocketSecondStage>;
 };
 
-export type LoginInput = {
-  client_id: Scalars['String'];
-  code: Scalars['String'];
-  provider: Scalars['String'];
-  redirect_url: Scalars['String'];
-  scopes: Scalars['String'];
-  state: Scalars['String'];
+export type LaunchRocketFairings = {
+  __typename?: 'LaunchRocketFairings';
+  recovered?: Maybe<Scalars['Boolean']>;
+  recovery_attempt?: Maybe<Scalars['Boolean']>;
+  reused?: Maybe<Scalars['Boolean']>;
+  ship?: Maybe<Scalars['String']>;
 };
 
-export type Logout = {
-  __typename?: 'Logout';
-  success: Scalars['Boolean'];
+export type LaunchRocketFirstStage = {
+  __typename?: 'LaunchRocketFirstStage';
+  cores?: Maybe<Array<Maybe<LaunchRocketFirstStageCore>>>;
+};
+
+export type LaunchRocketFirstStageCore = {
+  __typename?: 'LaunchRocketFirstStageCore';
+  block?: Maybe<Scalars['Int']>;
+  core?: Maybe<Core>;
+  flight?: Maybe<Scalars['Int']>;
+  gridfins?: Maybe<Scalars['Boolean']>;
+  land_success?: Maybe<Scalars['Boolean']>;
+  landing_intent?: Maybe<Scalars['Boolean']>;
+  landing_type?: Maybe<Scalars['String']>;
+  landing_vehicle?: Maybe<Scalars['String']>;
+  legs?: Maybe<Scalars['Boolean']>;
+  reused?: Maybe<Scalars['Boolean']>;
+};
+
+export type LaunchRocketSecondStage = {
+  __typename?: 'LaunchRocketSecondStage';
+  block?: Maybe<Scalars['Int']>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
+};
+
+export type LaunchSite = {
+  __typename?: 'LaunchSite';
+  site_id?: Maybe<Scalars['String']>;
+  site_name?: Maybe<Scalars['String']>;
+  site_name_long?: Maybe<Scalars['String']>;
+};
+
+export type LaunchTelemetry = {
+  __typename?: 'LaunchTelemetry';
+  flight_club?: Maybe<Scalars['String']>;
+};
+
+export type LaunchesPastResult = {
+  __typename?: 'LaunchesPastResult';
+  data?: Maybe<Array<Maybe<Launch>>>;
+  result?: Maybe<Result>;
+};
+
+export type Launchpad = {
+  __typename?: 'Launchpad';
+  attempted_launches?: Maybe<Scalars['Int']>;
+  details?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  location?: Maybe<Location>;
+  name?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['String']>;
+  successful_launches?: Maybe<Scalars['Int']>;
+  vehicles_launched?: Maybe<Array<Maybe<Rocket>>>;
+  wikipedia?: Maybe<Scalars['String']>;
+};
+
+export type Link = {
+  __typename?: 'Link';
+  article?: Maybe<Scalars['String']>;
+  reddit?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
+};
+
+export type Location = {
+  __typename?: 'Location';
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+  name?: Maybe<Scalars['String']>;
+  region?: Maybe<Scalars['String']>;
+};
+
+export type Mass = {
+  __typename?: 'Mass';
+  kg?: Maybe<Scalars['Int']>;
+  lb?: Maybe<Scalars['Int']>;
+};
+
+export type Mission = {
+  __typename?: 'Mission';
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  manufacturers?: Maybe<Array<Maybe<Scalars['String']>>>;
+  name?: Maybe<Scalars['String']>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
+  twitter?: Maybe<Scalars['String']>;
+  website?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
+};
+
+export type MissionResult = {
+  __typename?: 'MissionResult';
+  data?: Maybe<Array<Maybe<Mission>>>;
+  result?: Maybe<Result>;
+};
+
+export type MissionsFind = {
+  id?: InputMaybe<Scalars['ID']>;
+  manufacturer?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  payload_id?: InputMaybe<Scalars['String']>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  createContent?: Maybe<Content>;
-  createOrder?: Maybe<Order>;
-  createPermission?: Maybe<Permission>;
-  createPlasmid?: Maybe<Plasmid>;
-  createRole?: Maybe<Role>;
-  createRolePermissionRelationship?: Maybe<Role>;
-  createStrain?: Maybe<Strain>;
-  createUser?: Maybe<User>;
-  createUserRoleRelationship?: Maybe<User>;
-  deleteContent?: Maybe<DeleteContent>;
-  deletePermission?: Maybe<DeletePermission>;
-  deleteRole?: Maybe<DeleteRole>;
-  deleteStock?: Maybe<DeleteStock>;
-  deleteUser?: Maybe<DeleteUser>;
-  login?: Maybe<Auth>;
-  logout?: Maybe<Logout>;
-  updateContent?: Maybe<Content>;
-  updateOrder?: Maybe<Order>;
-  updatePermission?: Maybe<Permission>;
-  updatePlasmid?: Maybe<Plasmid>;
-  updateRole?: Maybe<Role>;
-  updateStrain?: Maybe<Strain>;
-  updateUser?: Maybe<User>;
+  /** delete data from the table: "users" */
+  delete_users?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "users" */
+  insert_users?: Maybe<Users_Mutation_Response>;
+  /** update data of the table: "users" */
+  update_users?: Maybe<Users_Mutation_Response>;
 };
 
 
-export type MutationCreateContentArgs = {
-  input?: InputMaybe<CreateContentInput>;
+export type MutationDelete_UsersArgs = {
+  where: Users_Bool_Exp;
 };
 
 
-export type MutationCreateOrderArgs = {
-  input?: InputMaybe<CreateOrderInput>;
+export type MutationInsert_UsersArgs = {
+  objects: Array<Users_Insert_Input>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
 };
 
 
-export type MutationCreatePermissionArgs = {
-  input?: InputMaybe<CreatePermissionInput>;
+export type MutationUpdate_UsersArgs = {
+  _set?: InputMaybe<Users_Set_Input>;
+  where: Users_Bool_Exp;
 };
 
-
-export type MutationCreatePlasmidArgs = {
-  input?: InputMaybe<CreatePlasmidInput>;
+export type Payload = {
+  __typename?: 'Payload';
+  customers?: Maybe<Array<Maybe<Scalars['String']>>>;
+  id?: Maybe<Scalars['ID']>;
+  manufacturer?: Maybe<Scalars['String']>;
+  nationality?: Maybe<Scalars['String']>;
+  norad_id?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  orbit?: Maybe<Scalars['String']>;
+  orbit_params?: Maybe<PayloadOrbitParams>;
+  payload_mass_kg?: Maybe<Scalars['Float']>;
+  payload_mass_lbs?: Maybe<Scalars['Float']>;
+  payload_type?: Maybe<Scalars['String']>;
+  reused?: Maybe<Scalars['Boolean']>;
 };
 
-
-export type MutationCreateRoleArgs = {
-  input?: InputMaybe<CreateRoleInput>;
+export type PayloadOrbitParams = {
+  __typename?: 'PayloadOrbitParams';
+  apoapsis_km?: Maybe<Scalars['Float']>;
+  arg_of_pericenter?: Maybe<Scalars['Float']>;
+  eccentricity?: Maybe<Scalars['Float']>;
+  epoch?: Maybe<Scalars['Date']>;
+  inclination_deg?: Maybe<Scalars['Float']>;
+  lifespan_years?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+  mean_anomaly?: Maybe<Scalars['Float']>;
+  mean_motion?: Maybe<Scalars['Float']>;
+  periapsis_km?: Maybe<Scalars['Float']>;
+  period_min?: Maybe<Scalars['Float']>;
+  raan?: Maybe<Scalars['Float']>;
+  reference_system?: Maybe<Scalars['String']>;
+  regime?: Maybe<Scalars['String']>;
+  semi_major_axis_km?: Maybe<Scalars['Float']>;
 };
 
-
-export type MutationCreateRolePermissionRelationshipArgs = {
-  permissionId: Scalars['ID'];
-  roleId: Scalars['ID'];
-};
-
-
-export type MutationCreateStrainArgs = {
-  input?: InputMaybe<CreateStrainInput>;
-};
-
-
-export type MutationCreateUserArgs = {
-  input?: InputMaybe<CreateUserInput>;
-};
-
-
-export type MutationCreateUserRoleRelationshipArgs = {
-  roleId: Scalars['ID'];
-  userId: Scalars['ID'];
-};
-
-
-export type MutationDeleteContentArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeletePermissionArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteRoleArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteStockArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteUserArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationLoginArgs = {
-  input?: InputMaybe<LoginInput>;
-};
-
-
-export type MutationUpdateContentArgs = {
-  input?: InputMaybe<UpdateContentInput>;
-};
-
-
-export type MutationUpdateOrderArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdateOrderInput>;
-};
-
-
-export type MutationUpdatePermissionArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdatePermissionInput>;
-};
-
-
-export type MutationUpdatePlasmidArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdatePlasmidInput>;
-};
-
-
-export type MutationUpdateRoleArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdateRoleInput>;
-};
-
-
-export type MutationUpdateStrainArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdateStrainInput>;
-};
-
-
-export type MutationUpdateUserArgs = {
-  id: Scalars['ID'];
-  input?: InputMaybe<UpdateUserInput>;
-};
-
-export type NameWithLink = {
-  __typename?: 'NameWithLink';
-  link: Scalars['String'];
-  name: Scalars['String'];
-};
-
-export type NumberOfPublicationsWithGene = {
-  __typename?: 'NumberOfPublicationsWithGene';
-  num_pubs: Scalars['Int'];
-  publications: Array<PublicationWithGene>;
-};
-
-export type Order = {
-  __typename?: 'Order';
-  comments?: Maybe<Scalars['String']>;
-  consumer?: Maybe<User>;
-  courier?: Maybe<Scalars['String']>;
-  courier_account?: Maybe<Scalars['String']>;
-  created_at: Scalars['Timestamp'];
-  id: Scalars['ID'];
-  items?: Maybe<Array<Stock>>;
-  payer?: Maybe<User>;
-  payment?: Maybe<Scalars['String']>;
-  purchase_order_num?: Maybe<Scalars['String']>;
-  purchaser?: Maybe<User>;
-  status?: Maybe<StatusEnum>;
-  updated_at: Scalars['Timestamp'];
-};
-
-export type OrderListWithCursor = {
-  __typename?: 'OrderListWithCursor';
-  limit?: Maybe<Scalars['Int']>;
-  nextCursor: Scalars['Int'];
-  orders: Array<Order>;
-  previousCursor: Scalars['Int'];
-  totalCount: Scalars['Int'];
-};
-
-export type Organism = {
-  __typename?: 'Organism';
-  citations: Array<Citation>;
-  downloads: Array<Download>;
-  scientific_name: Scalars['String'];
-  taxon_id: Scalars['String'];
-};
-
-export type Orthologs = {
-  __typename?: 'Orthologs';
-  gene_product: Scalars['String'];
-  id: NameWithLink;
-  source: Array<Scalars['String']>;
-  species: Scalars['String'];
-  uniprotkb: NameWithLink;
-};
-
-export type Permission = {
-  __typename?: 'Permission';
-  created_at: Scalars['Timestamp'];
-  description: Scalars['String'];
-  id: Scalars['ID'];
-  permission: Scalars['String'];
-  resource?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Timestamp'];
-};
-
-export type Phenotype = {
-  __typename?: 'Phenotype';
-  assay?: Maybe<Scalars['String']>;
-  environment?: Maybe<Scalars['String']>;
-  note?: Maybe<Scalars['String']>;
-  phenotype: Scalars['String'];
-  publication?: Maybe<Publication>;
-};
-
-export type Plasmid = Stock & {
-  __typename?: 'Plasmid';
-  created_at: Scalars['Timestamp'];
-  created_by: User;
-  dbxrefs?: Maybe<Array<Scalars['String']>>;
-  depositor: User;
-  editable_summary?: Maybe<Scalars['String']>;
-  genbank_accession?: Maybe<Scalars['String']>;
-  genes?: Maybe<Array<Gene>>;
-  id: Scalars['ID'];
-  image_map?: Maybe<Scalars['String']>;
-  in_stock: Scalars['Boolean'];
-  keywords?: Maybe<Array<Scalars['String']>>;
-  name: Scalars['String'];
-  publications?: Maybe<Array<Publication>>;
-  sequence?: Maybe<Scalars['String']>;
-  summary?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Timestamp'];
-  updated_by: User;
-};
-
-export type PlasmidListWithCursor = {
-  __typename?: 'PlasmidListWithCursor';
-  limit?: Maybe<Scalars['Int']>;
-  nextCursor: Scalars['Int'];
-  plasmids: Array<Plasmid>;
-  previousCursor: Scalars['Int'];
-  totalCount: Scalars['Int'];
-};
-
-export type ProductInformation = {
-  __typename?: 'ProductInformation';
-  genomic_coords: Array<GenomicCoordinates>;
-  more_protein_data: Scalars['String'];
-  protein_coding_gene: NameWithLink;
-  protein_length: Scalars['String'];
-  protein_molecular_weight: Scalars['String'];
-};
-
-export type ProteinGeneralInfo = {
-  __typename?: 'ProteinGeneralInfo';
-  aa_composition: NameWithLink;
-  description: Scalars['String'];
-  dictybase_id: Scalars['String'];
-  gene_product: Scalars['String'];
-  molecular_weight: Scalars['String'];
-  note: Scalars['String'];
-  protein_existence: Scalars['String'];
-  protein_length: Scalars['String'];
-  subcellular_location: Scalars['String'];
-};
-
-export type ProteinInformation = {
-  __typename?: 'ProteinInformation';
-  external_links: Array<NameWithLink>;
-  general_info: ProteinGeneralInfo;
-  protein_sequence: Scalars['String'];
-};
-
-export type Publication = BasePublication & {
-  __typename?: 'Publication';
-  abstract: Scalars['String'];
-  authors: Array<Author>;
-  doi?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  issn?: Maybe<Scalars['String']>;
-  issue?: Maybe<Scalars['String']>;
-  journal: Scalars['String'];
-  pages?: Maybe<Scalars['String']>;
-  pub_date?: Maybe<Scalars['Timestamp']>;
-  pub_type: Scalars['String'];
-  source: Scalars['String'];
-  status?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
-  volume?: Maybe<Scalars['String']>;
-};
-
-export type PublicationWithGene = BasePublication & {
-  __typename?: 'PublicationWithGene';
-  abstract: Scalars['String'];
-  authors: Array<Author>;
-  doi?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  issn?: Maybe<Scalars['String']>;
-  issue?: Maybe<Scalars['String']>;
-  journal: Scalars['String'];
-  pages?: Maybe<Scalars['String']>;
-  pub_date?: Maybe<Scalars['Timestamp']>;
-  pub_type: Scalars['String'];
-  related_genes: Array<Gene>;
-  source: Scalars['String'];
-  status?: Maybe<Scalars['String']>;
-  title: Scalars['String'];
-  volume?: Maybe<Scalars['String']>;
+export type PayloadsFind = {
+  apoapsis_km?: InputMaybe<Scalars['Float']>;
+  customer?: InputMaybe<Scalars['String']>;
+  eccentricity?: InputMaybe<Scalars['Float']>;
+  epoch?: InputMaybe<Scalars['Date']>;
+  inclination_deg?: InputMaybe<Scalars['Float']>;
+  lifespan_years?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
+  manufacturer?: InputMaybe<Scalars['String']>;
+  mean_motion?: InputMaybe<Scalars['Float']>;
+  nationality?: InputMaybe<Scalars['String']>;
+  norad_id?: InputMaybe<Scalars['Int']>;
+  orbit?: InputMaybe<Scalars['String']>;
+  payload_id?: InputMaybe<Scalars['ID']>;
+  payload_type?: InputMaybe<Scalars['String']>;
+  periapsis_km?: InputMaybe<Scalars['Float']>;
+  period_min?: InputMaybe<Scalars['Float']>;
+  raan?: InputMaybe<Scalars['Float']>;
+  reference_system?: InputMaybe<Scalars['String']>;
+  regime?: InputMaybe<Scalars['String']>;
+  reused?: InputMaybe<Scalars['Boolean']>;
+  semi_major_axis_km?: InputMaybe<Scalars['Float']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  allOrthologs?: Maybe<Gene>;
-  allPublications: NumberOfPublicationsWithGene;
-  allStrains?: Maybe<Gene>;
-  content?: Maybe<Content>;
-  contentBySlug?: Maybe<Content>;
-  gene?: Maybe<Gene>;
-  generalInformation?: Maybe<Gene>;
-  getAssociatedSequnces?: Maybe<Gene>;
-  getLinks?: Maybe<Gene>;
-  getProteinInformation?: Maybe<Gene>;
-  getRefreshToken?: Maybe<Auth>;
-  listGeneProductInfo?: Maybe<Gene>;
-  listOrders?: Maybe<OrderListWithCursor>;
-  listOrganisms?: Maybe<Array<Organism>>;
-  listPermissions?: Maybe<Array<Permission>>;
-  listPlasmids?: Maybe<PlasmidListWithCursor>;
-  listPlasmidsWithAnnotation?: Maybe<PlasmidListWithCursor>;
-  listRecentGenes?: Maybe<Array<Gene>>;
-  listRecentPlasmids?: Maybe<Array<Plasmid>>;
-  listRecentPublications?: Maybe<Array<Publication>>;
-  listRecentStrains?: Maybe<Array<Strain>>;
-  listRoles?: Maybe<Array<Role>>;
-  listStrains?: Maybe<StrainListWithCursor>;
-  listStrainsWithAnnotation?: Maybe<StrainListWithCursor>;
-  listUsers?: Maybe<UserList>;
-  order?: Maybe<Order>;
-  organism?: Maybe<Organism>;
-  permission?: Maybe<Permission>;
-  plasmid?: Maybe<Plasmid>;
-  publication?: Maybe<Publication>;
-  role?: Maybe<Role>;
-  strain?: Maybe<Strain>;
-  user?: Maybe<User>;
-  userByEmail?: Maybe<User>;
+  capsule?: Maybe<Capsule>;
+  capsules?: Maybe<Array<Maybe<Capsule>>>;
+  capsulesPast?: Maybe<Array<Maybe<Capsule>>>;
+  capsulesUpcoming?: Maybe<Array<Maybe<Capsule>>>;
+  company?: Maybe<Info>;
+  core?: Maybe<Core>;
+  cores?: Maybe<Array<Maybe<Core>>>;
+  coresPast?: Maybe<Array<Maybe<Core>>>;
+  coresUpcoming?: Maybe<Array<Maybe<Core>>>;
+  dragon?: Maybe<Dragon>;
+  dragons?: Maybe<Array<Maybe<Dragon>>>;
+  histories?: Maybe<Array<Maybe<History>>>;
+  historiesResult?: Maybe<HistoriesResult>;
+  history?: Maybe<History>;
+  landpad?: Maybe<Landpad>;
+  landpads?: Maybe<Array<Maybe<Landpad>>>;
+  launch?: Maybe<Launch>;
+  launchLatest?: Maybe<Launch>;
+  launchNext?: Maybe<Launch>;
+  launches?: Maybe<Array<Maybe<Launch>>>;
+  launchesPast?: Maybe<Array<Maybe<Launch>>>;
+  launchesPastResult?: Maybe<LaunchesPastResult>;
+  launchesUpcoming?: Maybe<Array<Maybe<Launch>>>;
+  launchpad?: Maybe<Launchpad>;
+  launchpads?: Maybe<Array<Maybe<Launchpad>>>;
+  mission?: Maybe<Mission>;
+  missions?: Maybe<Array<Maybe<Mission>>>;
+  missionsResult?: Maybe<MissionResult>;
+  payload?: Maybe<Payload>;
+  payloads?: Maybe<Array<Maybe<Payload>>>;
+  roadster?: Maybe<Roadster>;
+  rocket?: Maybe<Rocket>;
+  rockets?: Maybe<Array<Maybe<Rocket>>>;
+  rocketsResult?: Maybe<RocketsResult>;
+  ship?: Maybe<Ship>;
+  ships?: Maybe<Array<Maybe<Ship>>>;
+  shipsResult?: Maybe<ShipsResult>;
+  /** fetch data from the table: "users" */
+  users: Array<Users>;
+  /** fetch aggregated fields from the table: "users" */
+  users_aggregate: Users_Aggregate;
+  /** fetch data from the table: "users" using primary key columns */
+  users_by_pk?: Maybe<Users>;
 };
 
 
-export type QueryAllOrthologsArgs = {
-  gene: Scalars['String'];
+export type QueryCapsuleArgs = {
+  id: Scalars['ID'];
 };
 
 
-export type QueryAllPublicationsArgs = {
-  gene: Scalars['String'];
+export type QueryCapsulesArgs = {
+  find?: InputMaybe<CapsulesFind>;
   limit?: InputMaybe<Scalars['Int']>;
-  sort_by?: InputMaybe<Scalars['String']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryAllStrainsArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryContentArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type QueryContentBySlugArgs = {
-  slug: Scalars['String'];
-};
-
-
-export type QueryGeneArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryGeneralInformationArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryGetAssociatedSequncesArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryGetLinksArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryGetProteinInformationArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryGetRefreshTokenArgs = {
-  token: Scalars['String'];
-};
-
-
-export type QueryListGeneProductInfoArgs = {
-  gene: Scalars['String'];
-};
-
-
-export type QueryListOrdersArgs = {
-  cursor?: InputMaybe<Scalars['Int']>;
-  filter?: InputMaybe<Scalars['String']>;
+export type QueryCapsulesPastArgs = {
+  find?: InputMaybe<CapsulesFind>;
   limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryListPlasmidsArgs = {
-  cursor?: InputMaybe<Scalars['Int']>;
-  filter?: InputMaybe<Scalars['String']>;
+export type QueryCapsulesUpcomingArgs = {
+  find?: InputMaybe<CapsulesFind>;
   limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryListPlasmidsWithAnnotationArgs = {
-  annotation: Scalars['String'];
-  cursor?: InputMaybe<Scalars['Int']>;
+export type QueryCoreArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryCoresArgs = {
+  find?: InputMaybe<CoresFind>;
   limit?: InputMaybe<Scalars['Int']>;
-  type: Scalars['String'];
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryListRecentGenesArgs = {
-  limit: Scalars['Int'];
-};
-
-
-export type QueryListRecentPlasmidsArgs = {
-  limit: Scalars['Int'];
-};
-
-
-export type QueryListRecentPublicationsArgs = {
-  limit: Scalars['Int'];
-};
-
-
-export type QueryListRecentStrainsArgs = {
-  limit: Scalars['Int'];
-};
-
-
-export type QueryListStrainsArgs = {
-  cursor?: InputMaybe<Scalars['Int']>;
-  filter?: InputMaybe<StrainListFilter>;
+export type QueryCoresPastArgs = {
+  find?: InputMaybe<CoresFind>;
   limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryListStrainsWithAnnotationArgs = {
-  annotation: Scalars['String'];
-  cursor?: InputMaybe<Scalars['Int']>;
+export type QueryCoresUpcomingArgs = {
+  find?: InputMaybe<CoresFind>;
   limit?: InputMaybe<Scalars['Int']>;
-  type: Scalars['String'];
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
 };
 
 
-export type QueryListUsersArgs = {
-  filter: Scalars['String'];
-  pagenum: Scalars['String'];
-  pagesize: Scalars['String'];
-};
-
-
-export type QueryOrderArgs = {
+export type QueryDragonArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryOrganismArgs = {
-  taxon_id: Scalars['String'];
+export type QueryDragonsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
 };
 
 
-export type QueryPermissionArgs = {
+export type QueryHistoriesArgs = {
+  find?: InputMaybe<HistoryFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryHistoriesResultArgs = {
+  find?: InputMaybe<HistoryFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryHistoryArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryPlasmidArgs = {
+export type QueryLandpadArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryPublicationArgs = {
+export type QueryLandpadsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryLaunchArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryRoleArgs = {
+export type QueryLaunchLatestArgs = {
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryLaunchNextArgs = {
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryLaunchesArgs = {
+  find?: InputMaybe<LaunchFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryLaunchesPastArgs = {
+  find?: InputMaybe<LaunchFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryLaunchesPastResultArgs = {
+  find?: InputMaybe<LaunchFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryLaunchesUpcomingArgs = {
+  find?: InputMaybe<LaunchFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryLaunchpadArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryStrainArgs = {
+export type QueryLaunchpadsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryMissionArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryUserArgs = {
+export type QueryMissionsArgs = {
+  find?: InputMaybe<MissionsFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryMissionsResultArgs = {
+  find?: InputMaybe<MissionsFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryPayloadArgs = {
   id: Scalars['ID'];
 };
 
 
-export type QueryUserByEmailArgs = {
-  email: Scalars['String'];
+export type QueryPayloadsArgs = {
+  find?: InputMaybe<PayloadsFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryRocketArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryRocketsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryRocketsResultArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryShipArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type QueryShipsArgs = {
+  find?: InputMaybe<ShipsFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryShipsResultArgs = {
+  find?: InputMaybe<ShipsFind>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+};
+
+
+export type QueryUsersArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type QueryUsers_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
+
+
+export type QueryUsers_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+export type Result = {
+  __typename?: 'Result';
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type Roadster = {
+  __typename?: 'Roadster';
+  apoapsis_au?: Maybe<Scalars['Float']>;
+  details?: Maybe<Scalars['String']>;
+  earth_distance_km?: Maybe<Scalars['Float']>;
+  earth_distance_mi?: Maybe<Scalars['Float']>;
+  eccentricity?: Maybe<Scalars['Float']>;
+  epoch_jd?: Maybe<Scalars['Float']>;
+  inclination?: Maybe<Scalars['Float']>;
+  launch_date_unix?: Maybe<Scalars['Date']>;
+  launch_date_utc?: Maybe<Scalars['Date']>;
+  launch_mass_kg?: Maybe<Scalars['Int']>;
+  launch_mass_lbs?: Maybe<Scalars['Int']>;
+  longitude?: Maybe<Scalars['Float']>;
+  mars_distance_km?: Maybe<Scalars['Float']>;
+  mars_distance_mi?: Maybe<Scalars['Float']>;
+  name?: Maybe<Scalars['String']>;
+  norad_id?: Maybe<Scalars['Int']>;
+  orbit_type?: Maybe<Scalars['Float']>;
+  periapsis_arg?: Maybe<Scalars['Float']>;
+  periapsis_au?: Maybe<Scalars['Float']>;
+  period_days?: Maybe<Scalars['Float']>;
+  semi_major_axis_au?: Maybe<Scalars['Float']>;
+  speed_kph?: Maybe<Scalars['Float']>;
+  speed_mph?: Maybe<Scalars['Float']>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
 export type Rocket = {
   __typename?: 'Rocket';
-  active: Scalars['String'];
-  country: Scalars['String'];
-  description: Scalars['String'];
-  id: Scalars['String'];
-  name: Scalars['String'];
-  wikipedia: Scalars['String'];
-};
-
-export type Role = {
-  __typename?: 'Role';
-  created_at: Scalars['Timestamp'];
-  description: Scalars['String'];
-  id: Scalars['ID'];
-  permissions?: Maybe<Array<Permission>>;
-  role: Scalars['String'];
-  updated_at: Scalars['Timestamp'];
-};
-
-export enum StatusEnum {
-  Cancelled = 'CANCELLED',
-  Growing = 'GROWING',
-  InPreparation = 'IN_PREPARATION',
-  Shipped = 'SHIPPED'
-}
-
-export type Stock = {
-  created_at: Scalars['Timestamp'];
-  created_by: User;
-  dbxrefs?: Maybe<Array<Scalars['String']>>;
-  depositor: User;
-  editable_summary?: Maybe<Scalars['String']>;
-  genes?: Maybe<Array<Gene>>;
-  id: Scalars['ID'];
-  in_stock: Scalars['Boolean'];
-  publications?: Maybe<Array<Publication>>;
-  summary?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Timestamp'];
-  updated_by: User;
-};
-
-export type Strain = Stock & {
-  __typename?: 'Strain';
-  characteristics?: Maybe<Array<Scalars['String']>>;
-  created_at: Scalars['Timestamp'];
-  created_by: User;
-  dbxrefs?: Maybe<Array<Scalars['String']>>;
-  depositor: User;
-  editable_summary?: Maybe<Scalars['String']>;
-  genes?: Maybe<Array<Gene>>;
-  genetic_modification?: Maybe<Scalars['String']>;
-  genotypes?: Maybe<Array<Scalars['String']>>;
-  id: Scalars['ID'];
-  in_stock: Scalars['Boolean'];
-  label: Scalars['String'];
-  mutagenesis_method?: Maybe<Scalars['String']>;
-  names?: Maybe<Array<Scalars['String']>>;
-  parent?: Maybe<Strain>;
-  phenotypes?: Maybe<Array<Phenotype>>;
-  plasmid?: Maybe<Scalars['String']>;
-  publications?: Maybe<Array<Publication>>;
-  species: Scalars['String'];
-  summary?: Maybe<Scalars['String']>;
-  systematic_name: Scalars['String'];
-  updated_at: Scalars['Timestamp'];
-  updated_by: User;
-};
-
-export type StrainListFilter = {
-  id?: InputMaybe<Scalars['ID']>;
-  in_stock?: InputMaybe<Scalars['Boolean']>;
-  label?: InputMaybe<Scalars['String']>;
-  strain_type: StrainType;
-  summary?: InputMaybe<Scalars['String']>;
-};
-
-export type StrainListWithCursor = {
-  __typename?: 'StrainListWithCursor';
-  limit?: Maybe<Scalars['Int']>;
-  nextCursor: Scalars['Int'];
-  previousCursor: Scalars['Int'];
-  strains: Array<Strain>;
-  totalCount: Scalars['Int'];
-};
-
-export enum StrainType {
-  All = 'ALL',
-  Bacterial = 'BACTERIAL',
-  Gwdi = 'GWDI',
-  Regular = 'REGULAR'
-}
-
-export type UpdateContentInput = {
-  content: Scalars['String'];
-  id: Scalars['ID'];
-  updated_by: Scalars['String'];
-};
-
-export type UpdateOrderInput = {
-  comments?: InputMaybe<Scalars['String']>;
-  courier?: InputMaybe<Scalars['String']>;
-  courier_account?: InputMaybe<Scalars['String']>;
-  items?: InputMaybe<Array<Scalars['String']>>;
-  payment?: InputMaybe<Scalars['String']>;
-  purchase_order_num?: InputMaybe<Scalars['String']>;
-  status?: InputMaybe<StatusEnum>;
-};
-
-export type UpdatePermissionInput = {
-  description: Scalars['String'];
-  permission: Scalars['String'];
-  resource: Scalars['String'];
-};
-
-export type UpdatePlasmidInput = {
-  dbxrefs?: InputMaybe<Array<Scalars['String']>>;
-  depositor?: InputMaybe<Scalars['String']>;
-  editable_summary?: InputMaybe<Scalars['String']>;
-  genbank_accession?: InputMaybe<Scalars['String']>;
-  genes?: InputMaybe<Array<Scalars['String']>>;
-  image_map?: InputMaybe<Scalars['String']>;
-  in_stock?: InputMaybe<Scalars['Boolean']>;
-  keywords?: InputMaybe<Array<Scalars['String']>>;
-  name?: InputMaybe<Scalars['String']>;
-  publications?: InputMaybe<Array<Scalars['String']>>;
-  sequence?: InputMaybe<Scalars['String']>;
-  summary?: InputMaybe<Scalars['String']>;
-  updated_by: Scalars['String'];
-};
-
-export type UpdateRoleInput = {
-  description: Scalars['String'];
-  role: Scalars['String'];
-};
-
-export type UpdateStrainInput = {
-  characteristics?: InputMaybe<Array<Scalars['String']>>;
-  dbxrefs?: InputMaybe<Array<Scalars['String']>>;
-  depositor?: InputMaybe<Scalars['String']>;
-  editable_summary?: InputMaybe<Scalars['String']>;
-  genes?: InputMaybe<Array<Scalars['String']>>;
-  genetic_modification?: InputMaybe<Scalars['String']>;
-  genotypes?: InputMaybe<Array<Scalars['String']>>;
-  in_stock?: InputMaybe<Scalars['Boolean']>;
-  label?: InputMaybe<Scalars['String']>;
-  mutagenesis_method?: InputMaybe<Scalars['String']>;
-  names?: InputMaybe<Array<Scalars['String']>>;
-  parent?: InputMaybe<Scalars['String']>;
-  phenotypes?: InputMaybe<Array<Scalars['String']>>;
-  plasmid?: InputMaybe<Scalars['String']>;
-  publications?: InputMaybe<Array<Scalars['String']>>;
-  species?: InputMaybe<Scalars['String']>;
-  summary?: InputMaybe<Scalars['String']>;
-  systematic_name?: InputMaybe<Scalars['String']>;
-  updated_by: Scalars['String'];
-};
-
-export type UpdateUserInput = {
-  city?: InputMaybe<Scalars['String']>;
-  country?: InputMaybe<Scalars['String']>;
-  first_address?: InputMaybe<Scalars['String']>;
-  first_name?: InputMaybe<Scalars['String']>;
-  group_name?: InputMaybe<Scalars['String']>;
-  is_active?: InputMaybe<Scalars['Boolean']>;
-  last_name?: InputMaybe<Scalars['String']>;
-  organization?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  second_address?: InputMaybe<Scalars['String']>;
-  state?: InputMaybe<Scalars['String']>;
-  zipcode?: InputMaybe<Scalars['String']>;
-};
-
-export type User = {
-  __typename?: 'User';
-  city?: Maybe<Scalars['String']>;
+  active?: Maybe<Scalars['Boolean']>;
+  boosters?: Maybe<Scalars['Int']>;
+  company?: Maybe<Scalars['String']>;
+  cost_per_launch?: Maybe<Scalars['Int']>;
   country?: Maybe<Scalars['String']>;
-  created_at: Scalars['Timestamp'];
-  email: Scalars['String'];
-  first_address?: Maybe<Scalars['String']>;
-  first_name: Scalars['String'];
-  group_name?: Maybe<Scalars['String']>;
-  id: Scalars['ID'];
-  is_active: Scalars['Boolean'];
-  last_name: Scalars['String'];
-  organization?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  roles?: Maybe<Array<Role>>;
-  second_address?: Maybe<Scalars['String']>;
-  state?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Timestamp'];
-  zipcode?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+  diameter?: Maybe<Distance>;
+  engines?: Maybe<RocketEngines>;
+  first_flight?: Maybe<Scalars['Date']>;
+  first_stage?: Maybe<RocketFirstStage>;
+  height?: Maybe<Distance>;
+  id?: Maybe<Scalars['ID']>;
+  landing_legs?: Maybe<RocketLandingLegs>;
+  mass?: Maybe<Mass>;
+  name?: Maybe<Scalars['String']>;
+  payload_weights?: Maybe<Array<Maybe<RocketPayloadWeight>>>;
+  second_stage?: Maybe<RocketSecondStage>;
+  stages?: Maybe<Scalars['Int']>;
+  success_rate_pct?: Maybe<Scalars['Int']>;
+  type?: Maybe<Scalars['String']>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
-export type UserList = {
-  __typename?: 'UserList';
-  pageNum?: Maybe<Scalars['String']>;
-  pageSize?: Maybe<Scalars['String']>;
-  totalCount: Scalars['Int'];
-  users: Array<User>;
+export type RocketEngines = {
+  __typename?: 'RocketEngines';
+  engine_loss_max?: Maybe<Scalars['String']>;
+  layout?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['Int']>;
+  propellant_1?: Maybe<Scalars['String']>;
+  propellant_2?: Maybe<Scalars['String']>;
+  thrust_sea_level?: Maybe<Force>;
+  thrust_to_weight?: Maybe<Scalars['Float']>;
+  thrust_vacuum?: Maybe<Force>;
+  type?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']>;
 };
 
-export type With = {
-  __typename?: 'With';
-  db: Scalars['String'];
-  id: Scalars['String'];
-  name: Scalars['String'];
+export type RocketFirstStage = {
+  __typename?: 'RocketFirstStage';
+  burn_time_sec?: Maybe<Scalars['Int']>;
+  engines?: Maybe<Scalars['Int']>;
+  fuel_amount_tons?: Maybe<Scalars['Float']>;
+  reusable?: Maybe<Scalars['Boolean']>;
+  thrust_sea_level?: Maybe<Force>;
+  thrust_vacuum?: Maybe<Force>;
 };
 
-export type LoginMutationVariables = Exact<{
-  input: LoginInput;
-}>;
+export type RocketLandingLegs = {
+  __typename?: 'RocketLandingLegs';
+  material?: Maybe<Scalars['String']>;
+  number?: Maybe<Scalars['Int']>;
+};
+
+export type RocketPayloadWeight = {
+  __typename?: 'RocketPayloadWeight';
+  id?: Maybe<Scalars['String']>;
+  kg?: Maybe<Scalars['Int']>;
+  lb?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type RocketSecondStage = {
+  __typename?: 'RocketSecondStage';
+  burn_time_sec?: Maybe<Scalars['Int']>;
+  engines?: Maybe<Scalars['Int']>;
+  fuel_amount_tons?: Maybe<Scalars['Float']>;
+  payloads?: Maybe<RocketSecondStagePayloads>;
+  thrust?: Maybe<Force>;
+};
+
+export type RocketSecondStagePayloadCompositeFairing = {
+  __typename?: 'RocketSecondStagePayloadCompositeFairing';
+  diameter?: Maybe<Distance>;
+  height?: Maybe<Distance>;
+};
+
+export type RocketSecondStagePayloads = {
+  __typename?: 'RocketSecondStagePayloads';
+  composite_fairing?: Maybe<RocketSecondStagePayloadCompositeFairing>;
+  option_1?: Maybe<Scalars['String']>;
+};
+
+export type RocketsResult = {
+  __typename?: 'RocketsResult';
+  data?: Maybe<Array<Maybe<Rocket>>>;
+  result?: Maybe<Result>;
+};
+
+export type Ship = {
+  __typename?: 'Ship';
+  abs?: Maybe<Scalars['Int']>;
+  active?: Maybe<Scalars['Boolean']>;
+  attempted_landings?: Maybe<Scalars['Int']>;
+  class?: Maybe<Scalars['Int']>;
+  course_deg?: Maybe<Scalars['Int']>;
+  home_port?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  image?: Maybe<Scalars['String']>;
+  imo?: Maybe<Scalars['Int']>;
+  missions?: Maybe<Array<Maybe<ShipMission>>>;
+  mmsi?: Maybe<Scalars['Int']>;
+  model?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  position?: Maybe<ShipLocation>;
+  roles?: Maybe<Array<Maybe<Scalars['String']>>>;
+  speed_kn?: Maybe<Scalars['Float']>;
+  status?: Maybe<Scalars['String']>;
+  successful_landings?: Maybe<Scalars['Int']>;
+  type?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  weight_kg?: Maybe<Scalars['Int']>;
+  weight_lbs?: Maybe<Scalars['Int']>;
+  year_built?: Maybe<Scalars['Int']>;
+};
+
+export type ShipLocation = {
+  __typename?: 'ShipLocation';
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
+};
+
+export type ShipMission = {
+  __typename?: 'ShipMission';
+  flight?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type ShipsFind = {
+  abs?: InputMaybe<Scalars['Int']>;
+  active?: InputMaybe<Scalars['Boolean']>;
+  attempted_landings?: InputMaybe<Scalars['Int']>;
+  class?: InputMaybe<Scalars['Int']>;
+  course_deg?: InputMaybe<Scalars['Int']>;
+  home_port?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  imo?: InputMaybe<Scalars['Int']>;
+  latitude?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
+  mission?: InputMaybe<Scalars['String']>;
+  mmsi?: InputMaybe<Scalars['Int']>;
+  model?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  role?: InputMaybe<Scalars['String']>;
+  speed_kn?: InputMaybe<Scalars['Int']>;
+  status?: InputMaybe<Scalars['String']>;
+  successful_landings?: InputMaybe<Scalars['Int']>;
+  type?: InputMaybe<Scalars['String']>;
+  weight_kg?: InputMaybe<Scalars['Int']>;
+  weight_lbs?: InputMaybe<Scalars['Int']>;
+  year_built?: InputMaybe<Scalars['Int']>;
+};
+
+export type ShipsResult = {
+  __typename?: 'ShipsResult';
+  data?: Maybe<Array<Maybe<Ship>>>;
+  result?: Maybe<Result>;
+};
+
+/** expression to compare columns of type String. All fields are combined with logical 'AND'. */
+export type String_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['String']>;
+  _gt?: InputMaybe<Scalars['String']>;
+  _gte?: InputMaybe<Scalars['String']>;
+  _ilike?: InputMaybe<Scalars['String']>;
+  _in?: InputMaybe<Array<Scalars['String']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _like?: InputMaybe<Scalars['String']>;
+  _lt?: InputMaybe<Scalars['String']>;
+  _lte?: InputMaybe<Scalars['String']>;
+  _neq?: InputMaybe<Scalars['String']>;
+  _nilike?: InputMaybe<Scalars['String']>;
+  _nin?: InputMaybe<Array<Scalars['String']>>;
+  _nlike?: InputMaybe<Scalars['String']>;
+  _nsimilar?: InputMaybe<Scalars['String']>;
+  _similar?: InputMaybe<Scalars['String']>;
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  /** fetch data from the table: "users" */
+  users: Array<Users>;
+  /** fetch aggregated fields from the table: "users" */
+  users_aggregate: Users_Aggregate;
+  /** fetch data from the table: "users" using primary key columns */
+  users_by_pk?: Maybe<Users>;
+};
 
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'Auth', token: string, user: { __typename?: 'User', id: string, email: string, first_name: string, last_name: string, roles?: Array<{ __typename?: 'Role', role: string, permissions?: Array<{ __typename?: 'Permission', permission: string, resource?: string | null }> | null }> | null }, identity: { __typename?: 'Identity', provider: string } } | null };
-
-export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LogoutMutation = { __typename?: 'Mutation', logout?: { __typename?: 'Logout', success: boolean } | null };
-
-export type CreateContentMutationVariables = Exact<{
-  input: CreateContentInput;
-}>;
-
-
-export type CreateContentMutation = { __typename?: 'Mutation', createContent?: { __typename?: 'Content', name: string, content: string, namespace: string, created_by: { __typename?: 'User', id: string } } | null };
-
-export type UpdateContentMutationVariables = Exact<{
-  input: UpdateContentInput;
-}>;
-
-
-export type UpdateContentMutation = { __typename?: 'Mutation', updateContent?: { __typename?: 'Content', id: string, content: string, updated_by: { __typename?: 'User', id: string } } | null };
-
-export type CreateOrderMutationVariables = Exact<{
-  input: CreateOrderInput;
-}>;
-
-
-export type CreateOrderMutation = { __typename?: 'Mutation', createOrder?: { __typename?: 'Order', id: string } | null };
-
-export type CreateUserMutationVariables = Exact<{
-  input: CreateUserInput;
-}>;
-
-
-export type CreateUserMutation = { __typename?: 'Mutation', createUser?: { __typename?: 'User', id: string } | null };
-
-export type UpdateUserMutationVariables = Exact<{
-  id: Scalars['ID'];
-  input: UpdateUserInput;
-}>;
-
-
-export type UpdateUserMutation = { __typename?: 'Mutation', updateUser?: { __typename?: 'User', id: string } | null };
-
-export type GetRefreshTokenQueryVariables = Exact<{
-  token: Scalars['String'];
-}>;
-
-
-export type GetRefreshTokenQuery = { __typename?: 'Query', getRefreshToken?: { __typename?: 'Auth', token: string, user: { __typename?: 'User', id: string, email: string, first_name: string, last_name: string, roles?: Array<{ __typename?: 'Role', role: string, permissions?: Array<{ __typename?: 'Permission', permission: string, resource?: string | null }> | null }> | null }, identity: { __typename?: 'Identity', provider: string } } | null };
-
-export type ContentBySlugQueryVariables = Exact<{
-  slug: Scalars['String'];
-}>;
-
-
-export type ContentBySlugQuery = { __typename?: 'Query', contentBySlug?: { __typename?: 'Content', id: string, content: string, name: string, slug: string, updated_at: any, updated_by: { __typename?: 'User', id: string, email: string, first_name: string, last_name: string, roles?: Array<{ __typename?: 'Role', role: string, permissions?: Array<{ __typename?: 'Permission', permission: string, resource?: string | null }> | null }> | null } } | null };
-
-export type ContentQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type ContentQuery = { __typename?: 'Query', content?: { __typename?: 'Content', id: string, content: string, name: string, slug: string, namespace: string, updated_at: any, updated_by: { __typename?: 'User', id: string, email: string, first_name: string, last_name: string, roles?: Array<{ __typename?: 'Role', role: string, permissions?: Array<{ __typename?: 'Permission', permission: string, resource?: string | null }> | null }> | null } } | null };
-
-export type ListOrganismsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ListOrganismsQuery = { __typename?: 'Query', listOrganisms?: Array<{ __typename?: 'Organism', taxon_id: string, scientific_name: string, citations: Array<{ __typename?: 'Citation', title: string, authors: string, pubmed_id: string, journal: string }>, downloads: Array<{ __typename?: 'Download', title: string, items: Array<{ __typename?: 'DownloadItem', title: string, url: string }> }> }> | null };
-
-export type GeneQueryVariables = Exact<{
-  gene: Scalars['String'];
+export type SubscriptionUsersArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']>;
-  sort_by?: InputMaybe<Scalars['String']>;
-}>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
 
 
-export type GeneQuery = { __typename?: 'Query', allStrains?: { __typename?: 'Gene', id: string, name: string, strains?: Array<{ __typename?: 'Strain', id: string, label: string, characteristics?: Array<string> | null, in_stock: boolean, phenotypes?: Array<{ __typename?: 'Phenotype', phenotype: string, publication?: { __typename?: 'Publication', id: string, title: string, journal: string, pages?: string | null, volume?: string | null, pub_date?: any | null, authors: Array<{ __typename?: 'Author', last_name: string, rank?: string | null }> } | null }> | null }> | null } | null, gene?: { __typename?: 'Gene', id: string, name: string, goas?: Array<{ __typename?: 'GOAnnotation', id: string, type: string, date: string, evidence_code: string, go_term: string, qualifier: string, publication: string, assigned_by: string, with?: Array<{ __typename?: 'With', id: string, db: string, name: string }> | null, extensions?: Array<{ __typename?: 'Extension', id: string, db: string, relation: string, name: string }> | null }> | null } | null, allPublications: { __typename?: 'NumberOfPublicationsWithGene', num_pubs: number, publications: Array<{ __typename?: 'PublicationWithGene', id: string, doi?: string | null, title: string, journal: string, pub_date?: any | null, volume?: string | null, pages?: string | null, pub_type: string, source: string, issue?: string | null, related_genes: Array<{ __typename?: 'Gene', id: string, name: string }>, authors: Array<{ __typename?: 'Author', last_name: string, rank?: string | null }> }> }, allOrthologs?: { __typename?: 'Gene', id: string, name: string, orthologs?: Array<{ __typename?: 'Orthologs', species: string, gene_product: string, source: Array<string>, id: { __typename?: 'NameWithLink', name: string, link: string }, uniprotkb: { __typename?: 'NameWithLink', name: string, link: string } }> | null } | null, listGeneProductInfo?: { __typename?: 'Gene', id: string, name: string, product_info?: Array<{ __typename?: 'ProductInformation', protein_length: string, protein_molecular_weight: string, more_protein_data: string, protein_coding_gene: { __typename?: 'NameWithLink', name: string, link: string }, genomic_coords: Array<{ __typename?: 'GenomicCoordinates', exon: string, local_coords: string, chrom_coords: string }> }> | null } | null, generalInformation?: { __typename?: 'Gene', id: string, name: string, general_info: { __typename?: 'GeneralInfo', name_description: Array<string>, alt_gene_name?: Array<string> | null, gene_product: string, alt_protein_names?: Array<string> | null, description: string } } | null, getAssociatedSequnces?: { __typename?: 'Gene', id: string, name: string, associated_sequences: { __typename?: 'AssociatedSequences', more_link: string, genbank_genomic_fragment?: { __typename?: 'NameWithLink', name: string, link: string } | null, genbank_mrna?: { __typename?: 'NameWithLink', name: string, link: string } | null, ests: Array<{ __typename?: 'NameWithLink', name: string, link: string }> } } | null, getLinks?: { __typename?: 'Gene', id: string, name: string, links: { __typename?: 'Links', expression: Array<{ __typename?: 'NameWithLink', name: string, link: string }>, colleagues: { __typename?: 'NameWithLink', name: string, link: string }, ext_resources: Array<{ __typename?: 'NameWithLink', name: string, link: string }> } } | null, getProteinInformation?: { __typename?: 'Gene', id: string, name: string, protein_information?: { __typename?: 'ProteinInformation', protein_sequence: string, general_info: { __typename?: 'ProteinGeneralInfo', gene_product: string, dictybase_id: string, description: string, protein_length: string, molecular_weight: string, subcellular_location: string, protein_existence: string, note: string, aa_composition: { __typename?: 'NameWithLink', name: string, link: string } }, external_links: Array<{ __typename?: 'NameWithLink', name: string, link: string }> } | null } | null };
-
-export type ListRecentGenesQueryVariables = Exact<{
-  limit?: Scalars['Int'];
-}>;
-
-
-export type ListRecentGenesQuery = { __typename?: 'Query', listRecentGenes?: Array<{ __typename?: 'Gene', id: string, name: string }> | null };
-
-export type PublicationQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
+export type SubscriptionUsers_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Users_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Users_Order_By>>;
+  where?: InputMaybe<Users_Bool_Exp>;
+};
 
 
-export type PublicationQuery = { __typename?: 'Query', publication?: { __typename?: 'Publication', id: string, doi?: string | null, title: string, abstract: string, journal: string, pub_date?: any | null, pages?: string | null, issue?: string | null, volume?: string | null, authors: Array<{ __typename?: 'Author', initials?: string | null, last_name: string }> } | null };
+export type SubscriptionUsers_By_PkArgs = {
+  id: Scalars['uuid'];
+};
 
-export type ListRecentPublicationsQueryVariables = Exact<{
-  limit?: Scalars['Int'];
-}>;
+export type Volume = {
+  __typename?: 'Volume';
+  cubic_feet?: Maybe<Scalars['Int']>;
+  cubic_meters?: Maybe<Scalars['Int']>;
+};
 
-
-export type ListRecentPublicationsQuery = { __typename?: 'Query', listRecentPublications?: Array<{ __typename?: 'Publication', id: string, doi?: string | null, title: string, abstract: string, journal: string, pub_date?: any | null, pages?: string | null, issue?: string | null, volume?: string | null, authors: Array<{ __typename?: 'Author', initials?: string | null, last_name: string }> }> | null };
-
-export type StrainListQueryVariables = Exact<{
-  cursor: Scalars['Int'];
-  limit: Scalars['Int'];
-  filter?: InputMaybe<StrainListFilter>;
-}>;
-
-
-export type StrainListQuery = { __typename?: 'Query', listStrains?: { __typename?: 'StrainListWithCursor', nextCursor: number, totalCount: number, strains: Array<{ __typename?: 'Strain', id: string, label: string, summary?: string | null, in_stock: boolean }> } | null };
-
-export type ListStrainsWithPhenotypeQueryVariables = Exact<{
-  cursor: Scalars['Int'];
-  limit: Scalars['Int'];
-  type: Scalars['String'];
-  annotation: Scalars['String'];
-}>;
-
-
-export type ListStrainsWithPhenotypeQuery = { __typename?: 'Query', listStrainsWithAnnotation?: { __typename?: 'StrainListWithCursor', totalCount: number, nextCursor: number, strains: Array<{ __typename?: 'Strain', id: string, label: string, genes?: Array<{ __typename?: 'Gene', name: string }> | null, publications?: Array<{ __typename?: 'Publication', id: string, pub_date?: any | null, title: string, journal: string, volume?: string | null, pages?: string | null, authors: Array<{ __typename?: 'Author', last_name: string }> }> | null }> } | null };
-
-export type ListBacterialStrainsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type ListBacterialStrainsQuery = { __typename?: 'Query', bacterialFoodSource?: { __typename?: 'StrainListWithCursor', totalCount: number, nextCursor: number, strains: Array<{ __typename?: 'Strain', id: string, label: string, summary?: string | null, in_stock: boolean }> } | null, symbioticFarmerBacterium?: { __typename?: 'StrainListWithCursor', totalCount: number, nextCursor: number, strains: Array<{ __typename?: 'Strain', id: string, label: string, summary?: string | null, in_stock: boolean }> } | null };
-
-export type ListStrainsInventoryQueryVariables = Exact<{
-  cursor: Scalars['Int'];
-  limit: Scalars['Int'];
-}>;
-
-
-export type ListStrainsInventoryQuery = { __typename?: 'Query', listStrainsWithAnnotation?: { __typename?: 'StrainListWithCursor', totalCount: number, nextCursor: number, strains: Array<{ __typename?: 'Strain', id: string, label: string, summary?: string | null, in_stock: boolean }> } | null };
-
-export type ListPlasmidsInventoryQueryVariables = Exact<{
-  cursor: Scalars['Int'];
-  limit: Scalars['Int'];
-}>;
-
-
-export type ListPlasmidsInventoryQuery = { __typename?: 'Query', listPlasmidsWithAnnotation?: { __typename?: 'PlasmidListWithCursor', totalCount: number, nextCursor: number, plasmids: Array<{ __typename?: 'Plasmid', id: string, name: string, summary?: string | null, in_stock: boolean }> } | null };
-
-export type PlasmidListFilterQueryVariables = Exact<{
-  cursor: Scalars['Int'];
-  limit: Scalars['Int'];
-  filter: Scalars['String'];
-}>;
-
-
-export type PlasmidListFilterQuery = { __typename?: 'Query', listPlasmids?: { __typename?: 'PlasmidListWithCursor', nextCursor: number, totalCount: number, plasmids: Array<{ __typename?: 'Plasmid', id: string, name: string, summary?: string | null, in_stock: boolean }> } | null };
-
-export type PlasmidQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type PlasmidQuery = { __typename?: 'Query', plasmid?: { __typename?: 'Plasmid', id: string, name: string, summary?: string | null, dbxrefs?: Array<string> | null, image_map?: string | null, sequence?: string | null, keywords?: Array<string> | null, genbank_accession?: string | null, in_stock: boolean, depositor: { __typename?: 'User', first_name: string, last_name: string }, publications?: Array<{ __typename?: 'Publication', id: string, pub_date?: any | null, title: string, journal: string, volume?: string | null, pages?: string | null, doi?: string | null, authors: Array<{ __typename?: 'Author', last_name: string }> }> | null, genes?: Array<{ __typename?: 'Gene', name: string }> | null } | null };
-
-export type StrainQueryVariables = Exact<{
-  id: Scalars['ID'];
-}>;
-
-
-export type StrainQuery = { __typename?: 'Query', strain?: { __typename?: 'Strain', id: string, label: string, summary?: string | null, species: string, plasmid?: string | null, dbxrefs?: Array<string> | null, in_stock: boolean, systematic_name: string, genotypes?: Array<string> | null, mutagenesis_method?: string | null, genetic_modification?: string | null, names?: Array<string> | null, characteristics?: Array<string> | null, parent?: { __typename?: 'Strain', id: string, label: string } | null, depositor: { __typename?: 'User', first_name: string, last_name: string }, publications?: Array<{ __typename?: 'Publication', id: string, pub_date?: any | null, title: string, journal: string, volume?: string | null, pages?: string | null, doi?: string | null, authors: Array<{ __typename?: 'Author', last_name: string }> }> | null, genes?: Array<{ __typename?: 'Gene', name: string }> | null, phenotypes?: Array<{ __typename?: 'Phenotype', phenotype: string, note?: string | null, assay?: string | null, environment?: string | null, publication?: { __typename?: 'Publication', id: string, pub_date?: any | null, title: string, journal: string, volume?: string | null, pages?: string | null, authors: Array<{ __typename?: 'Author', last_name: string }> } | null }> | null } | null };
-
-export type ListRecentPlasmidsQueryVariables = Exact<{
-  limit?: Scalars['Int'];
-}>;
-
-
-export type ListRecentPlasmidsQuery = { __typename?: 'Query', listRecentPlasmids?: Array<{ __typename?: 'Plasmid', id: string, created_at: any, name: string }> | null };
-
-export type ListRecentStrainsQueryVariables = Exact<{
-  limit?: Scalars['Int'];
-}>;
-
-
-export type ListRecentStrainsQuery = { __typename?: 'Query', listRecentStrains?: Array<{ __typename?: 'Strain', id: string, created_at: any, systematic_name: string }> | null };
-
-export type UserByEmailQueryVariables = Exact<{
-  email: Scalars['String'];
-}>;
-
-
-export type UserByEmailQuery = { __typename?: 'Query', userByEmail?: { __typename?: 'User', id: string } | null };
-
-
-export const LoginDocument = gql`
-    mutation Login($input: LoginInput!) {
-  login(input: $input) {
-    token
-    user {
-      id
-      email
-      first_name
-      last_name
-      roles {
-        role
-        permissions {
-          permission
-          resource
-        }
-      }
-    }
-    identity {
-      provider
-    }
-  }
+/** conflict action */
+export enum Conflict_Action {
+  /** ignore the insert on this row */
+  Ignore = 'ignore',
+  /** update the row with the given values */
+  Update = 'update'
 }
-    `;
-export type LoginMutationFn = Apollo.MutationFunction<LoginMutation, LoginMutationVariables>;
 
-/**
- * __useLoginMutation__
- *
- * To run a mutation, you first call `useLoginMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLoginMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [loginMutation, { data, loading, error }] = useLoginMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useLoginMutation(baseOptions?: Apollo.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
-      }
-export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
-export type LoginMutationResult = Apollo.MutationResult<LoginMutation>;
-export type LoginMutationOptions = Apollo.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
-export const LogoutDocument = gql`
-    mutation Logout {
-  logout {
-    success
-  }
+/** column ordering options */
+export enum Order_By {
+  /** in the ascending order, nulls last */
+  Asc = 'asc',
+  /** in the ascending order, nulls first */
+  AscNullsFirst = 'asc_nulls_first',
+  /** in the ascending order, nulls last */
+  AscNullsLast = 'asc_nulls_last',
+  /** in the descending order, nulls first */
+  Desc = 'desc',
+  /** in the descending order, nulls first */
+  DescNullsFirst = 'desc_nulls_first',
+  /** in the descending order, nulls last */
+  DescNullsLast = 'desc_nulls_last'
 }
-    `;
-export type LogoutMutationFn = Apollo.MutationFunction<LogoutMutation, LogoutMutationVariables>;
 
-/**
- * __useLogoutMutation__
- *
- * To run a mutation, you first call `useLogoutMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useLogoutMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [logoutMutation, { data, loading, error }] = useLogoutMutation({
- *   variables: {
- *   },
- * });
- */
-export function useLogoutMutation(baseOptions?: Apollo.MutationHookOptions<LogoutMutation, LogoutMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<LogoutMutation, LogoutMutationVariables>(LogoutDocument, options);
-      }
-export type LogoutMutationHookResult = ReturnType<typeof useLogoutMutation>;
-export type LogoutMutationResult = Apollo.MutationResult<LogoutMutation>;
-export type LogoutMutationOptions = Apollo.BaseMutationOptions<LogoutMutation, LogoutMutationVariables>;
-export const CreateContentDocument = gql`
-    mutation CreateContent($input: CreateContentInput!) {
-  createContent(input: $input) {
+/** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
+export type Timestamptz_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['timestamptz']>;
+  _gt?: InputMaybe<Scalars['timestamptz']>;
+  _gte?: InputMaybe<Scalars['timestamptz']>;
+  _in?: InputMaybe<Array<Scalars['timestamptz']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['timestamptz']>;
+  _lte?: InputMaybe<Scalars['timestamptz']>;
+  _neq?: InputMaybe<Scalars['timestamptz']>;
+  _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
+};
+
+/** columns and relationships of "users" */
+export type Users = {
+  __typename?: 'users';
+  id: Scalars['uuid'];
+  name?: Maybe<Scalars['String']>;
+  rocket?: Maybe<Scalars['String']>;
+  timestamp: Scalars['timestamptz'];
+  twitter?: Maybe<Scalars['String']>;
+};
+
+/** aggregated selection of "users" */
+export type Users_Aggregate = {
+  __typename?: 'users_aggregate';
+  aggregate?: Maybe<Users_Aggregate_Fields>;
+  nodes: Array<Users>;
+};
+
+/** aggregate fields of "users" */
+export type Users_Aggregate_Fields = {
+  __typename?: 'users_aggregate_fields';
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Users_Max_Fields>;
+  min?: Maybe<Users_Min_Fields>;
+};
+
+
+/** aggregate fields of "users" */
+export type Users_Aggregate_FieldsCountArgs = {
+  columns?: InputMaybe<Array<Users_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "users" */
+export type Users_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Users_Max_Order_By>;
+  min?: InputMaybe<Users_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "users" */
+export type Users_Arr_Rel_Insert_Input = {
+  data: Array<Users_Insert_Input>;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
+export type Users_Bool_Exp = {
+  _and?: InputMaybe<Array<InputMaybe<Users_Bool_Exp>>>;
+  _not?: InputMaybe<Users_Bool_Exp>;
+  _or?: InputMaybe<Array<InputMaybe<Users_Bool_Exp>>>;
+  id?: InputMaybe<Uuid_Comparison_Exp>;
+  name?: InputMaybe<String_Comparison_Exp>;
+  rocket?: InputMaybe<String_Comparison_Exp>;
+  timestamp?: InputMaybe<Timestamptz_Comparison_Exp>;
+  twitter?: InputMaybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "users" */
+export enum Users_Constraint {
+  /** unique or primary key constraint */
+  UsersPkey = 'users_pkey'
+}
+
+/** input type for inserting data into table "users" */
+export type Users_Insert_Input = {
+  id?: InputMaybe<Scalars['uuid']>;
+  name?: InputMaybe<Scalars['String']>;
+  rocket?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['timestamptz']>;
+  twitter?: InputMaybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Users_Max_Fields = {
+  __typename?: 'users_max_fields';
+  name?: Maybe<Scalars['String']>;
+  rocket?: Maybe<Scalars['String']>;
+  timestamp?: Maybe<Scalars['timestamptz']>;
+  twitter?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "users" */
+export type Users_Max_Order_By = {
+  name?: InputMaybe<Order_By>;
+  rocket?: InputMaybe<Order_By>;
+  timestamp?: InputMaybe<Order_By>;
+  twitter?: InputMaybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Users_Min_Fields = {
+  __typename?: 'users_min_fields';
+  name?: Maybe<Scalars['String']>;
+  rocket?: Maybe<Scalars['String']>;
+  timestamp?: Maybe<Scalars['timestamptz']>;
+  twitter?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "users" */
+export type Users_Min_Order_By = {
+  name?: InputMaybe<Order_By>;
+  rocket?: InputMaybe<Order_By>;
+  timestamp?: InputMaybe<Order_By>;
+  twitter?: InputMaybe<Order_By>;
+};
+
+/** response of any mutation on the table "users" */
+export type Users_Mutation_Response = {
+  __typename?: 'users_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Users>;
+};
+
+/** input type for inserting object relation for remote table "users" */
+export type Users_Obj_Rel_Insert_Input = {
+  data: Users_Insert_Input;
+  on_conflict?: InputMaybe<Users_On_Conflict>;
+};
+
+/** on conflict condition type for table "users" */
+export type Users_On_Conflict = {
+  constraint: Users_Constraint;
+  update_columns: Array<Users_Update_Column>;
+};
+
+/** ordering options when selecting data from "users" */
+export type Users_Order_By = {
+  id?: InputMaybe<Order_By>;
+  name?: InputMaybe<Order_By>;
+  rocket?: InputMaybe<Order_By>;
+  timestamp?: InputMaybe<Order_By>;
+  twitter?: InputMaybe<Order_By>;
+};
+
+/** select columns of table "users" */
+export enum Users_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Rocket = 'rocket',
+  /** column name */
+  Timestamp = 'timestamp',
+  /** column name */
+  Twitter = 'twitter'
+}
+
+/** input type for updating data in table "users" */
+export type Users_Set_Input = {
+  id?: InputMaybe<Scalars['uuid']>;
+  name?: InputMaybe<Scalars['String']>;
+  rocket?: InputMaybe<Scalars['String']>;
+  timestamp?: InputMaybe<Scalars['timestamptz']>;
+  twitter?: InputMaybe<Scalars['String']>;
+};
+
+/** update columns of table "users" */
+export enum Users_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  Rocket = 'rocket',
+  /** column name */
+  Timestamp = 'timestamp',
+  /** column name */
+  Twitter = 'twitter'
+}
+
+/** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
+export type Uuid_Comparison_Exp = {
+  _eq?: InputMaybe<Scalars['uuid']>;
+  _gt?: InputMaybe<Scalars['uuid']>;
+  _gte?: InputMaybe<Scalars['uuid']>;
+  _in?: InputMaybe<Array<Scalars['uuid']>>;
+  _is_null?: InputMaybe<Scalars['Boolean']>;
+  _lt?: InputMaybe<Scalars['uuid']>;
+  _lte?: InputMaybe<Scalars['uuid']>;
+  _neq?: InputMaybe<Scalars['uuid']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']>>;
+};
+
+export type GetRocketsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type GetRocketsQuery = { __typename?: 'Query', rockets?: Array<{ __typename?: 'Rocket', active?: boolean | null, country?: string | null, description?: string | null, id?: string | null, name?: string | null, wikipedia?: string | null } | null> | null };
+
+
+export const GetRocketsDocument = gql`
+    query GetRockets($limit: Int) {
+  rockets(limit: $limit) {
+    active
+    country
+    description
+    id
     name
-    created_by {
-      id
-    }
-    content
-    namespace
-  }
-}
-    `;
-export type CreateContentMutationFn = Apollo.MutationFunction<CreateContentMutation, CreateContentMutationVariables>;
-
-/**
- * __useCreateContentMutation__
- *
- * To run a mutation, you first call `useCreateContentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateContentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createContentMutation, { data, loading, error }] = useCreateContentMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateContentMutation(baseOptions?: Apollo.MutationHookOptions<CreateContentMutation, CreateContentMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateContentMutation, CreateContentMutationVariables>(CreateContentDocument, options);
-      }
-export type CreateContentMutationHookResult = ReturnType<typeof useCreateContentMutation>;
-export type CreateContentMutationResult = Apollo.MutationResult<CreateContentMutation>;
-export type CreateContentMutationOptions = Apollo.BaseMutationOptions<CreateContentMutation, CreateContentMutationVariables>;
-export const UpdateContentDocument = gql`
-    mutation UpdateContent($input: UpdateContentInput!) {
-  updateContent(input: $input) {
-    id
-    updated_by {
-      id
-    }
-    content
-  }
-}
-    `;
-export type UpdateContentMutationFn = Apollo.MutationFunction<UpdateContentMutation, UpdateContentMutationVariables>;
-
-/**
- * __useUpdateContentMutation__
- *
- * To run a mutation, you first call `useUpdateContentMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateContentMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateContentMutation, { data, loading, error }] = useUpdateContentMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateContentMutation(baseOptions?: Apollo.MutationHookOptions<UpdateContentMutation, UpdateContentMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateContentMutation, UpdateContentMutationVariables>(UpdateContentDocument, options);
-      }
-export type UpdateContentMutationHookResult = ReturnType<typeof useUpdateContentMutation>;
-export type UpdateContentMutationResult = Apollo.MutationResult<UpdateContentMutation>;
-export type UpdateContentMutationOptions = Apollo.BaseMutationOptions<UpdateContentMutation, UpdateContentMutationVariables>;
-export const CreateOrderDocument = gql`
-    mutation CreateOrder($input: CreateOrderInput!) {
-  createOrder(input: $input) {
-    id
-  }
-}
-    `;
-export type CreateOrderMutationFn = Apollo.MutationFunction<CreateOrderMutation, CreateOrderMutationVariables>;
-
-/**
- * __useCreateOrderMutation__
- *
- * To run a mutation, you first call `useCreateOrderMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateOrderMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createOrderMutation, { data, loading, error }] = useCreateOrderMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateOrderMutation(baseOptions?: Apollo.MutationHookOptions<CreateOrderMutation, CreateOrderMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateOrderMutation, CreateOrderMutationVariables>(CreateOrderDocument, options);
-      }
-export type CreateOrderMutationHookResult = ReturnType<typeof useCreateOrderMutation>;
-export type CreateOrderMutationResult = Apollo.MutationResult<CreateOrderMutation>;
-export type CreateOrderMutationOptions = Apollo.BaseMutationOptions<CreateOrderMutation, CreateOrderMutationVariables>;
-export const CreateUserDocument = gql`
-    mutation CreateUser($input: CreateUserInput!) {
-  createUser(input: $input) {
-    id
-  }
-}
-    `;
-export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
-
-/**
- * __useCreateUserMutation__
- *
- * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
- *   variables: {
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, options);
-      }
-export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
-export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export const UpdateUserDocument = gql`
-    mutation UpdateUser($id: ID!, $input: UpdateUserInput!) {
-  updateUser(id: $id, input: $input) {
-    id
-  }
-}
-    `;
-export type UpdateUserMutationFn = Apollo.MutationFunction<UpdateUserMutation, UpdateUserMutationVariables>;
-
-/**
- * __useUpdateUserMutation__
- *
- * To run a mutation, you first call `useUpdateUserMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useUpdateUserMutation` returns a tuple that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - An object with fields that represent the current status of the mutation's execution
- *
- * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
- *
- * @example
- * const [updateUserMutation, { data, loading, error }] = useUpdateUserMutation({
- *   variables: {
- *      id: // value for 'id'
- *      input: // value for 'input'
- *   },
- * });
- */
-export function useUpdateUserMutation(baseOptions?: Apollo.MutationHookOptions<UpdateUserMutation, UpdateUserMutationVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<UpdateUserMutation, UpdateUserMutationVariables>(UpdateUserDocument, options);
-      }
-export type UpdateUserMutationHookResult = ReturnType<typeof useUpdateUserMutation>;
-export type UpdateUserMutationResult = Apollo.MutationResult<UpdateUserMutation>;
-export type UpdateUserMutationOptions = Apollo.BaseMutationOptions<UpdateUserMutation, UpdateUserMutationVariables>;
-export const GetRefreshTokenDocument = gql`
-    query GetRefreshToken($token: String!) {
-  getRefreshToken(token: $token) {
-    token
-    user {
-      id
-      email
-      first_name
-      last_name
-      roles {
-        role
-        permissions {
-          permission
-          resource
-        }
-      }
-    }
-    identity {
-      provider
-    }
+    wikipedia
   }
 }
     `;
 
 /**
- * __useGetRefreshTokenQuery__
+ * __useGetRocketsQuery__
  *
- * To run a query within a React component, call `useGetRefreshTokenQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetRefreshTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetRocketsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetRocketsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetRefreshTokenQuery({
- *   variables: {
- *      token: // value for 'token'
- *   },
- * });
- */
-export function useGetRefreshTokenQuery(baseOptions: Apollo.QueryHookOptions<GetRefreshTokenQuery, GetRefreshTokenQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetRefreshTokenQuery, GetRefreshTokenQueryVariables>(GetRefreshTokenDocument, options);
-      }
-export function useGetRefreshTokenLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRefreshTokenQuery, GetRefreshTokenQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetRefreshTokenQuery, GetRefreshTokenQueryVariables>(GetRefreshTokenDocument, options);
-        }
-export type GetRefreshTokenQueryHookResult = ReturnType<typeof useGetRefreshTokenQuery>;
-export type GetRefreshTokenLazyQueryHookResult = ReturnType<typeof useGetRefreshTokenLazyQuery>;
-export type GetRefreshTokenQueryResult = Apollo.QueryResult<GetRefreshTokenQuery, GetRefreshTokenQueryVariables>;
-export const ContentBySlugDocument = gql`
-    query contentBySlug($slug: String!) {
-  contentBySlug(slug: $slug) {
-    id
-    content
-    name
-    slug
-    updated_at
-    updated_by {
-      id
-      email
-      first_name
-      last_name
-      roles {
-        role
-        permissions {
-          permission
-          resource
-        }
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useContentBySlugQuery__
- *
- * To run a query within a React component, call `useContentBySlugQuery` and pass it any options that fit your needs.
- * When your component renders, `useContentBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useContentBySlugQuery({
- *   variables: {
- *      slug: // value for 'slug'
- *   },
- * });
- */
-export function useContentBySlugQuery(baseOptions: Apollo.QueryHookOptions<ContentBySlugQuery, ContentBySlugQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ContentBySlugQuery, ContentBySlugQueryVariables>(ContentBySlugDocument, options);
-      }
-export function useContentBySlugLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ContentBySlugQuery, ContentBySlugQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ContentBySlugQuery, ContentBySlugQueryVariables>(ContentBySlugDocument, options);
-        }
-export type ContentBySlugQueryHookResult = ReturnType<typeof useContentBySlugQuery>;
-export type ContentBySlugLazyQueryHookResult = ReturnType<typeof useContentBySlugLazyQuery>;
-export type ContentBySlugQueryResult = Apollo.QueryResult<ContentBySlugQuery, ContentBySlugQueryVariables>;
-export const ContentDocument = gql`
-    query content($id: ID!) {
-  content(id: $id) {
-    id
-    content
-    name
-    slug
-    namespace
-    updated_at
-    updated_by {
-      id
-      email
-      first_name
-      last_name
-      roles {
-        role
-        permissions {
-          permission
-          resource
-        }
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useContentQuery__
- *
- * To run a query within a React component, call `useContentQuery` and pass it any options that fit your needs.
- * When your component renders, `useContentQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useContentQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useContentQuery(baseOptions: Apollo.QueryHookOptions<ContentQuery, ContentQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ContentQuery, ContentQueryVariables>(ContentDocument, options);
-      }
-export function useContentLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ContentQuery, ContentQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ContentQuery, ContentQueryVariables>(ContentDocument, options);
-        }
-export type ContentQueryHookResult = ReturnType<typeof useContentQuery>;
-export type ContentLazyQueryHookResult = ReturnType<typeof useContentLazyQuery>;
-export type ContentQueryResult = Apollo.QueryResult<ContentQuery, ContentQueryVariables>;
-export const ListOrganismsDocument = gql`
-    query ListOrganisms {
-  listOrganisms {
-    taxon_id
-    scientific_name
-    citations {
-      title
-      authors
-      pubmed_id
-      journal
-    }
-    downloads {
-      title
-      items {
-        title
-        url
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useListOrganismsQuery__
- *
- * To run a query within a React component, call `useListOrganismsQuery` and pass it any options that fit your needs.
- * When your component renders, `useListOrganismsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListOrganismsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useListOrganismsQuery(baseOptions?: Apollo.QueryHookOptions<ListOrganismsQuery, ListOrganismsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListOrganismsQuery, ListOrganismsQueryVariables>(ListOrganismsDocument, options);
-      }
-export function useListOrganismsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListOrganismsQuery, ListOrganismsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListOrganismsQuery, ListOrganismsQueryVariables>(ListOrganismsDocument, options);
-        }
-export type ListOrganismsQueryHookResult = ReturnType<typeof useListOrganismsQuery>;
-export type ListOrganismsLazyQueryHookResult = ReturnType<typeof useListOrganismsLazyQuery>;
-export type ListOrganismsQueryResult = Apollo.QueryResult<ListOrganismsQuery, ListOrganismsQueryVariables>;
-export const GeneDocument = gql`
-    query Gene($gene: String!, $limit: Int, $sort_by: String = "desc") {
-  allStrains(gene: $gene) {
-    id
-    name
-    strains {
-      id
-      label
-      characteristics
-      in_stock
-      phenotypes {
-        phenotype
-        publication {
-          id
-          title
-          journal
-          pages
-          volume
-          pub_date
-          authors {
-            last_name
-            rank
-          }
-        }
-      }
-    }
-  }
-  gene(gene: $gene) {
-    id
-    name
-    goas {
-      id
-      type
-      date
-      evidence_code
-      go_term
-      qualifier
-      publication
-      assigned_by
-      with {
-        id
-        db
-        name
-      }
-      extensions {
-        id
-        db
-        relation
-        name
-      }
-    }
-  }
-  allPublications(gene: $gene, limit: $limit, sort_by: $sort_by) {
-    num_pubs
-    publications {
-      related_genes {
-        id
-        name
-      }
-      id
-      doi
-      title
-      journal
-      pub_date
-      volume
-      pages
-      pub_type
-      source
-      issue
-      authors {
-        last_name
-        rank
-      }
-    }
-  }
-  allOrthologs(gene: $gene) {
-    id
-    name
-    orthologs {
-      id {
-        name
-        link
-      }
-      species
-      uniprotkb {
-        name
-        link
-      }
-      gene_product
-      source
-    }
-  }
-  listGeneProductInfo(gene: $gene) {
-    id
-    name
-    product_info {
-      protein_coding_gene {
-        name
-        link
-      }
-      protein_length
-      protein_molecular_weight
-      more_protein_data
-      genomic_coords {
-        exon
-        local_coords
-        chrom_coords
-      }
-    }
-  }
-  generalInformation(gene: $gene) {
-    id
-    name
-    general_info {
-      name_description
-      alt_gene_name
-      gene_product
-      alt_protein_names
-      description
-    }
-  }
-  getAssociatedSequnces(gene: $gene) {
-    id
-    name
-    associated_sequences {
-      genbank_genomic_fragment {
-        name
-        link
-      }
-      genbank_mrna {
-        name
-        link
-      }
-      ests {
-        name
-        link
-      }
-      more_link
-    }
-  }
-  getLinks(gene: $gene) {
-    id
-    name
-    links {
-      expression {
-        name
-        link
-      }
-      colleagues {
-        name
-        link
-      }
-      ext_resources {
-        name
-        link
-      }
-    }
-  }
-  getProteinInformation(gene: $gene) {
-    id
-    name
-    protein_information {
-      general_info {
-        gene_product
-        dictybase_id
-        description
-        protein_length
-        molecular_weight
-        aa_composition {
-          name
-          link
-        }
-        subcellular_location
-        protein_existence
-        note
-      }
-      external_links {
-        name
-        link
-      }
-      protein_sequence
-    }
-  }
-}
-    `;
-
-/**
- * __useGeneQuery__
- *
- * To run a query within a React component, call `useGeneQuery` and pass it any options that fit your needs.
- * When your component renders, `useGeneQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useGeneQuery({
- *   variables: {
- *      gene: // value for 'gene'
- *      limit: // value for 'limit'
- *      sort_by: // value for 'sort_by'
- *   },
- * });
- */
-export function useGeneQuery(baseOptions: Apollo.QueryHookOptions<GeneQuery, GeneQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GeneQuery, GeneQueryVariables>(GeneDocument, options);
-      }
-export function useGeneLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GeneQuery, GeneQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GeneQuery, GeneQueryVariables>(GeneDocument, options);
-        }
-export type GeneQueryHookResult = ReturnType<typeof useGeneQuery>;
-export type GeneLazyQueryHookResult = ReturnType<typeof useGeneLazyQuery>;
-export type GeneQueryResult = Apollo.QueryResult<GeneQuery, GeneQueryVariables>;
-export const ListRecentGenesDocument = gql`
-    query ListRecentGenes($limit: Int! = 4) {
-  listRecentGenes(limit: $limit) {
-    id
-    name
-  }
-}
-    `;
-
-/**
- * __useListRecentGenesQuery__
- *
- * To run a query within a React component, call `useListRecentGenesQuery` and pass it any options that fit your needs.
- * When your component renders, `useListRecentGenesQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListRecentGenesQuery({
+ * const { data, loading, error } = useGetRocketsQuery({
  *   variables: {
  *      limit: // value for 'limit'
  *   },
  * });
  */
-export function useListRecentGenesQuery(baseOptions?: Apollo.QueryHookOptions<ListRecentGenesQuery, ListRecentGenesQueryVariables>) {
+export function useGetRocketsQuery(baseOptions?: Apollo.QueryHookOptions<GetRocketsQuery, GetRocketsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListRecentGenesQuery, ListRecentGenesQueryVariables>(ListRecentGenesDocument, options);
+        return Apollo.useQuery<GetRocketsQuery, GetRocketsQueryVariables>(GetRocketsDocument, options);
       }
-export function useListRecentGenesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListRecentGenesQuery, ListRecentGenesQueryVariables>) {
+export function useGetRocketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetRocketsQuery, GetRocketsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListRecentGenesQuery, ListRecentGenesQueryVariables>(ListRecentGenesDocument, options);
+          return Apollo.useLazyQuery<GetRocketsQuery, GetRocketsQueryVariables>(GetRocketsDocument, options);
         }
-export type ListRecentGenesQueryHookResult = ReturnType<typeof useListRecentGenesQuery>;
-export type ListRecentGenesLazyQueryHookResult = ReturnType<typeof useListRecentGenesLazyQuery>;
-export type ListRecentGenesQueryResult = Apollo.QueryResult<ListRecentGenesQuery, ListRecentGenesQueryVariables>;
-export const PublicationDocument = gql`
-    query Publication($id: ID!) {
-  publication(id: $id) {
-    id
-    doi
-    title
-    abstract
-    journal
-    pub_date
-    pages
-    issue
-    volume
-    authors {
-      initials
-      last_name
-    }
-  }
-}
-    `;
-
-/**
- * __usePublicationQuery__
- *
- * To run a query within a React component, call `usePublicationQuery` and pass it any options that fit your needs.
- * When your component renders, `usePublicationQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePublicationQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function usePublicationQuery(baseOptions: Apollo.QueryHookOptions<PublicationQuery, PublicationQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PublicationQuery, PublicationQueryVariables>(PublicationDocument, options);
-      }
-export function usePublicationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PublicationQuery, PublicationQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PublicationQuery, PublicationQueryVariables>(PublicationDocument, options);
-        }
-export type PublicationQueryHookResult = ReturnType<typeof usePublicationQuery>;
-export type PublicationLazyQueryHookResult = ReturnType<typeof usePublicationLazyQuery>;
-export type PublicationQueryResult = Apollo.QueryResult<PublicationQuery, PublicationQueryVariables>;
-export const ListRecentPublicationsDocument = gql`
-    query ListRecentPublications($limit: Int! = 4) {
-  listRecentPublications(limit: $limit) {
-    id
-    doi
-    title
-    abstract
-    journal
-    pub_date
-    pages
-    issue
-    volume
-    authors {
-      initials
-      last_name
-    }
-  }
-}
-    `;
-
-/**
- * __useListRecentPublicationsQuery__
- *
- * To run a query within a React component, call `useListRecentPublicationsQuery` and pass it any options that fit your needs.
- * When your component renders, `useListRecentPublicationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListRecentPublicationsQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useListRecentPublicationsQuery(baseOptions?: Apollo.QueryHookOptions<ListRecentPublicationsQuery, ListRecentPublicationsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListRecentPublicationsQuery, ListRecentPublicationsQueryVariables>(ListRecentPublicationsDocument, options);
-      }
-export function useListRecentPublicationsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListRecentPublicationsQuery, ListRecentPublicationsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListRecentPublicationsQuery, ListRecentPublicationsQueryVariables>(ListRecentPublicationsDocument, options);
-        }
-export type ListRecentPublicationsQueryHookResult = ReturnType<typeof useListRecentPublicationsQuery>;
-export type ListRecentPublicationsLazyQueryHookResult = ReturnType<typeof useListRecentPublicationsLazyQuery>;
-export type ListRecentPublicationsQueryResult = Apollo.QueryResult<ListRecentPublicationsQuery, ListRecentPublicationsQueryVariables>;
-export const StrainListDocument = gql`
-    query StrainList($cursor: Int!, $limit: Int!, $filter: StrainListFilter) {
-  listStrains(cursor: $cursor, limit: $limit, filter: $filter) {
-    nextCursor
-    totalCount
-    strains {
-      id
-      label
-      summary
-      in_stock
-    }
-  }
-}
-    `;
-
-/**
- * __useStrainListQuery__
- *
- * To run a query within a React component, call `useStrainListQuery` and pass it any options that fit your needs.
- * When your component renders, `useStrainListQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useStrainListQuery({
- *   variables: {
- *      cursor: // value for 'cursor'
- *      limit: // value for 'limit'
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function useStrainListQuery(baseOptions: Apollo.QueryHookOptions<StrainListQuery, StrainListQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<StrainListQuery, StrainListQueryVariables>(StrainListDocument, options);
-      }
-export function useStrainListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StrainListQuery, StrainListQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<StrainListQuery, StrainListQueryVariables>(StrainListDocument, options);
-        }
-export type StrainListQueryHookResult = ReturnType<typeof useStrainListQuery>;
-export type StrainListLazyQueryHookResult = ReturnType<typeof useStrainListLazyQuery>;
-export type StrainListQueryResult = Apollo.QueryResult<StrainListQuery, StrainListQueryVariables>;
-export const ListStrainsWithPhenotypeDocument = gql`
-    query ListStrainsWithPhenotype($cursor: Int!, $limit: Int!, $type: String!, $annotation: String!) {
-  listStrainsWithAnnotation(
-    cursor: $cursor
-    limit: $limit
-    type: $type
-    annotation: $annotation
-  ) {
-    totalCount
-    nextCursor
-    strains {
-      id
-      label
-      genes {
-        name
-      }
-      publications {
-        id
-        pub_date
-        title
-        journal
-        volume
-        pages
-        authors {
-          last_name
-        }
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useListStrainsWithPhenotypeQuery__
- *
- * To run a query within a React component, call `useListStrainsWithPhenotypeQuery` and pass it any options that fit your needs.
- * When your component renders, `useListStrainsWithPhenotypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListStrainsWithPhenotypeQuery({
- *   variables: {
- *      cursor: // value for 'cursor'
- *      limit: // value for 'limit'
- *      type: // value for 'type'
- *      annotation: // value for 'annotation'
- *   },
- * });
- */
-export function useListStrainsWithPhenotypeQuery(baseOptions: Apollo.QueryHookOptions<ListStrainsWithPhenotypeQuery, ListStrainsWithPhenotypeQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListStrainsWithPhenotypeQuery, ListStrainsWithPhenotypeQueryVariables>(ListStrainsWithPhenotypeDocument, options);
-      }
-export function useListStrainsWithPhenotypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListStrainsWithPhenotypeQuery, ListStrainsWithPhenotypeQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListStrainsWithPhenotypeQuery, ListStrainsWithPhenotypeQueryVariables>(ListStrainsWithPhenotypeDocument, options);
-        }
-export type ListStrainsWithPhenotypeQueryHookResult = ReturnType<typeof useListStrainsWithPhenotypeQuery>;
-export type ListStrainsWithPhenotypeLazyQueryHookResult = ReturnType<typeof useListStrainsWithPhenotypeLazyQuery>;
-export type ListStrainsWithPhenotypeQueryResult = Apollo.QueryResult<ListStrainsWithPhenotypeQuery, ListStrainsWithPhenotypeQueryVariables>;
-export const ListBacterialStrainsDocument = gql`
-    query ListBacterialStrains {
-  bacterialFoodSource: listStrainsWithAnnotation(
-    cursor: 0
-    limit: 100
-    type: "characteristic"
-    annotation: "bacterial food source"
-  ) {
-    totalCount
-    nextCursor
-    strains {
-      id
-      label
-      summary
-      in_stock
-    }
-  }
-  symbioticFarmerBacterium: listStrainsWithAnnotation(
-    cursor: 0
-    limit: 100
-    type: "characteristic"
-    annotation: "symbiotic farmer bacterium"
-  ) {
-    totalCount
-    nextCursor
-    strains {
-      id
-      label
-      summary
-      in_stock
-    }
-  }
-}
-    `;
-
-/**
- * __useListBacterialStrainsQuery__
- *
- * To run a query within a React component, call `useListBacterialStrainsQuery` and pass it any options that fit your needs.
- * When your component renders, `useListBacterialStrainsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListBacterialStrainsQuery({
- *   variables: {
- *   },
- * });
- */
-export function useListBacterialStrainsQuery(baseOptions?: Apollo.QueryHookOptions<ListBacterialStrainsQuery, ListBacterialStrainsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListBacterialStrainsQuery, ListBacterialStrainsQueryVariables>(ListBacterialStrainsDocument, options);
-      }
-export function useListBacterialStrainsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListBacterialStrainsQuery, ListBacterialStrainsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListBacterialStrainsQuery, ListBacterialStrainsQueryVariables>(ListBacterialStrainsDocument, options);
-        }
-export type ListBacterialStrainsQueryHookResult = ReturnType<typeof useListBacterialStrainsQuery>;
-export type ListBacterialStrainsLazyQueryHookResult = ReturnType<typeof useListBacterialStrainsLazyQuery>;
-export type ListBacterialStrainsQueryResult = Apollo.QueryResult<ListBacterialStrainsQuery, ListBacterialStrainsQueryVariables>;
-export const ListStrainsInventoryDocument = gql`
-    query ListStrainsInventory($cursor: Int!, $limit: Int!) {
-  listStrainsWithAnnotation(
-    cursor: $cursor
-    limit: $limit
-    type: "strain_inventory"
-    annotation: "strain_inventory"
-  ) {
-    totalCount
-    nextCursor
-    strains {
-      id
-      label
-      summary
-      in_stock
-    }
-  }
-}
-    `;
-
-/**
- * __useListStrainsInventoryQuery__
- *
- * To run a query within a React component, call `useListStrainsInventoryQuery` and pass it any options that fit your needs.
- * When your component renders, `useListStrainsInventoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListStrainsInventoryQuery({
- *   variables: {
- *      cursor: // value for 'cursor'
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useListStrainsInventoryQuery(baseOptions: Apollo.QueryHookOptions<ListStrainsInventoryQuery, ListStrainsInventoryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListStrainsInventoryQuery, ListStrainsInventoryQueryVariables>(ListStrainsInventoryDocument, options);
-      }
-export function useListStrainsInventoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListStrainsInventoryQuery, ListStrainsInventoryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListStrainsInventoryQuery, ListStrainsInventoryQueryVariables>(ListStrainsInventoryDocument, options);
-        }
-export type ListStrainsInventoryQueryHookResult = ReturnType<typeof useListStrainsInventoryQuery>;
-export type ListStrainsInventoryLazyQueryHookResult = ReturnType<typeof useListStrainsInventoryLazyQuery>;
-export type ListStrainsInventoryQueryResult = Apollo.QueryResult<ListStrainsInventoryQuery, ListStrainsInventoryQueryVariables>;
-export const ListPlasmidsInventoryDocument = gql`
-    query ListPlasmidsInventory($cursor: Int!, $limit: Int!) {
-  listPlasmidsWithAnnotation(
-    cursor: $cursor
-    limit: $limit
-    type: "plasmid_inventory"
-    annotation: "plasmid inventory"
-  ) {
-    totalCount
-    nextCursor
-    plasmids {
-      id
-      name
-      summary
-      in_stock
-    }
-  }
-}
-    `;
-
-/**
- * __useListPlasmidsInventoryQuery__
- *
- * To run a query within a React component, call `useListPlasmidsInventoryQuery` and pass it any options that fit your needs.
- * When your component renders, `useListPlasmidsInventoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListPlasmidsInventoryQuery({
- *   variables: {
- *      cursor: // value for 'cursor'
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useListPlasmidsInventoryQuery(baseOptions: Apollo.QueryHookOptions<ListPlasmidsInventoryQuery, ListPlasmidsInventoryQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListPlasmidsInventoryQuery, ListPlasmidsInventoryQueryVariables>(ListPlasmidsInventoryDocument, options);
-      }
-export function useListPlasmidsInventoryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListPlasmidsInventoryQuery, ListPlasmidsInventoryQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListPlasmidsInventoryQuery, ListPlasmidsInventoryQueryVariables>(ListPlasmidsInventoryDocument, options);
-        }
-export type ListPlasmidsInventoryQueryHookResult = ReturnType<typeof useListPlasmidsInventoryQuery>;
-export type ListPlasmidsInventoryLazyQueryHookResult = ReturnType<typeof useListPlasmidsInventoryLazyQuery>;
-export type ListPlasmidsInventoryQueryResult = Apollo.QueryResult<ListPlasmidsInventoryQuery, ListPlasmidsInventoryQueryVariables>;
-export const PlasmidListFilterDocument = gql`
-    query PlasmidListFilter($cursor: Int!, $limit: Int!, $filter: String!) {
-  listPlasmids(cursor: $cursor, limit: $limit, filter: $filter) {
-    nextCursor
-    totalCount
-    plasmids {
-      id
-      name
-      summary
-      in_stock
-    }
-  }
-}
-    `;
-
-/**
- * __usePlasmidListFilterQuery__
- *
- * To run a query within a React component, call `usePlasmidListFilterQuery` and pass it any options that fit your needs.
- * When your component renders, `usePlasmidListFilterQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePlasmidListFilterQuery({
- *   variables: {
- *      cursor: // value for 'cursor'
- *      limit: // value for 'limit'
- *      filter: // value for 'filter'
- *   },
- * });
- */
-export function usePlasmidListFilterQuery(baseOptions: Apollo.QueryHookOptions<PlasmidListFilterQuery, PlasmidListFilterQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PlasmidListFilterQuery, PlasmidListFilterQueryVariables>(PlasmidListFilterDocument, options);
-      }
-export function usePlasmidListFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PlasmidListFilterQuery, PlasmidListFilterQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PlasmidListFilterQuery, PlasmidListFilterQueryVariables>(PlasmidListFilterDocument, options);
-        }
-export type PlasmidListFilterQueryHookResult = ReturnType<typeof usePlasmidListFilterQuery>;
-export type PlasmidListFilterLazyQueryHookResult = ReturnType<typeof usePlasmidListFilterLazyQuery>;
-export type PlasmidListFilterQueryResult = Apollo.QueryResult<PlasmidListFilterQuery, PlasmidListFilterQueryVariables>;
-export const PlasmidDocument = gql`
-    query Plasmid($id: ID!) {
-  plasmid(id: $id) {
-    id
-    name
-    summary
-    depositor {
-      first_name
-      last_name
-    }
-    publications {
-      id
-      pub_date
-      title
-      journal
-      volume
-      pages
-      doi
-      authors {
-        last_name
-      }
-    }
-    dbxrefs
-    genes {
-      name
-    }
-    image_map
-    sequence
-    keywords
-    genbank_accession
-    in_stock
-  }
-}
-    `;
-
-/**
- * __usePlasmidQuery__
- *
- * To run a query within a React component, call `usePlasmidQuery` and pass it any options that fit your needs.
- * When your component renders, `usePlasmidQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = usePlasmidQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function usePlasmidQuery(baseOptions: Apollo.QueryHookOptions<PlasmidQuery, PlasmidQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<PlasmidQuery, PlasmidQueryVariables>(PlasmidDocument, options);
-      }
-export function usePlasmidLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PlasmidQuery, PlasmidQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<PlasmidQuery, PlasmidQueryVariables>(PlasmidDocument, options);
-        }
-export type PlasmidQueryHookResult = ReturnType<typeof usePlasmidQuery>;
-export type PlasmidLazyQueryHookResult = ReturnType<typeof usePlasmidLazyQuery>;
-export type PlasmidQueryResult = Apollo.QueryResult<PlasmidQuery, PlasmidQueryVariables>;
-export const StrainDocument = gql`
-    query Strain($id: ID!) {
-  strain(id: $id) {
-    id
-    label
-    summary
-    species
-    parent {
-      id
-      label
-    }
-    depositor {
-      first_name
-      last_name
-    }
-    plasmid
-    dbxrefs
-    publications {
-      id
-      pub_date
-      title
-      journal
-      volume
-      pages
-      doi
-      authors {
-        last_name
-      }
-    }
-    genes {
-      name
-    }
-    in_stock
-    systematic_name
-    genotypes
-    mutagenesis_method
-    genetic_modification
-    names
-    characteristics
-    phenotypes {
-      phenotype
-      note
-      assay
-      environment
-      publication {
-        id
-        pub_date
-        title
-        journal
-        volume
-        pages
-        authors {
-          last_name
-        }
-      }
-    }
-  }
-}
-    `;
-
-/**
- * __useStrainQuery__
- *
- * To run a query within a React component, call `useStrainQuery` and pass it any options that fit your needs.
- * When your component renders, `useStrainQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useStrainQuery({
- *   variables: {
- *      id: // value for 'id'
- *   },
- * });
- */
-export function useStrainQuery(baseOptions: Apollo.QueryHookOptions<StrainQuery, StrainQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<StrainQuery, StrainQueryVariables>(StrainDocument, options);
-      }
-export function useStrainLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<StrainQuery, StrainQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<StrainQuery, StrainQueryVariables>(StrainDocument, options);
-        }
-export type StrainQueryHookResult = ReturnType<typeof useStrainQuery>;
-export type StrainLazyQueryHookResult = ReturnType<typeof useStrainLazyQuery>;
-export type StrainQueryResult = Apollo.QueryResult<StrainQuery, StrainQueryVariables>;
-export const ListRecentPlasmidsDocument = gql`
-    query ListRecentPlasmids($limit: Int! = 4) {
-  listRecentPlasmids(limit: $limit) {
-    id
-    created_at
-    name
-  }
-}
-    `;
-
-/**
- * __useListRecentPlasmidsQuery__
- *
- * To run a query within a React component, call `useListRecentPlasmidsQuery` and pass it any options that fit your needs.
- * When your component renders, `useListRecentPlasmidsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListRecentPlasmidsQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useListRecentPlasmidsQuery(baseOptions?: Apollo.QueryHookOptions<ListRecentPlasmidsQuery, ListRecentPlasmidsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListRecentPlasmidsQuery, ListRecentPlasmidsQueryVariables>(ListRecentPlasmidsDocument, options);
-      }
-export function useListRecentPlasmidsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListRecentPlasmidsQuery, ListRecentPlasmidsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListRecentPlasmidsQuery, ListRecentPlasmidsQueryVariables>(ListRecentPlasmidsDocument, options);
-        }
-export type ListRecentPlasmidsQueryHookResult = ReturnType<typeof useListRecentPlasmidsQuery>;
-export type ListRecentPlasmidsLazyQueryHookResult = ReturnType<typeof useListRecentPlasmidsLazyQuery>;
-export type ListRecentPlasmidsQueryResult = Apollo.QueryResult<ListRecentPlasmidsQuery, ListRecentPlasmidsQueryVariables>;
-export const ListRecentStrainsDocument = gql`
-    query ListRecentStrains($limit: Int! = 4) {
-  listRecentStrains(limit: $limit) {
-    id
-    created_at
-    systematic_name
-  }
-}
-    `;
-
-/**
- * __useListRecentStrainsQuery__
- *
- * To run a query within a React component, call `useListRecentStrainsQuery` and pass it any options that fit your needs.
- * When your component renders, `useListRecentStrainsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useListRecentStrainsQuery({
- *   variables: {
- *      limit: // value for 'limit'
- *   },
- * });
- */
-export function useListRecentStrainsQuery(baseOptions?: Apollo.QueryHookOptions<ListRecentStrainsQuery, ListRecentStrainsQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<ListRecentStrainsQuery, ListRecentStrainsQueryVariables>(ListRecentStrainsDocument, options);
-      }
-export function useListRecentStrainsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ListRecentStrainsQuery, ListRecentStrainsQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<ListRecentStrainsQuery, ListRecentStrainsQueryVariables>(ListRecentStrainsDocument, options);
-        }
-export type ListRecentStrainsQueryHookResult = ReturnType<typeof useListRecentStrainsQuery>;
-export type ListRecentStrainsLazyQueryHookResult = ReturnType<typeof useListRecentStrainsLazyQuery>;
-export type ListRecentStrainsQueryResult = Apollo.QueryResult<ListRecentStrainsQuery, ListRecentStrainsQueryVariables>;
-export const UserByEmailDocument = gql`
-    query UserByEmail($email: String!) {
-  userByEmail(email: $email) {
-    id
-  }
-}
-    `;
-
-/**
- * __useUserByEmailQuery__
- *
- * To run a query within a React component, call `useUserByEmailQuery` and pass it any options that fit your needs.
- * When your component renders, `useUserByEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUserByEmailQuery({
- *   variables: {
- *      email: // value for 'email'
- *   },
- * });
- */
-export function useUserByEmailQuery(baseOptions: Apollo.QueryHookOptions<UserByEmailQuery, UserByEmailQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<UserByEmailQuery, UserByEmailQueryVariables>(UserByEmailDocument, options);
-      }
-export function useUserByEmailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UserByEmailQuery, UserByEmailQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<UserByEmailQuery, UserByEmailQueryVariables>(UserByEmailDocument, options);
-        }
-export type UserByEmailQueryHookResult = ReturnType<typeof useUserByEmailQuery>;
-export type UserByEmailLazyQueryHookResult = ReturnType<typeof useUserByEmailLazyQuery>;
-export type UserByEmailQueryResult = Apollo.QueryResult<UserByEmailQuery, UserByEmailQueryVariables>;
+export type GetRocketsQueryHookResult = ReturnType<typeof useGetRocketsQuery>;
+export type GetRocketsLazyQueryHookResult = ReturnType<typeof useGetRocketsLazyQuery>;
+export type GetRocketsQueryResult = Apollo.QueryResult<GetRocketsQuery, GetRocketsQueryVariables>;
