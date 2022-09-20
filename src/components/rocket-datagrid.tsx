@@ -1,11 +1,11 @@
-import { Maybe, Rocket, RocketsResult } from "../generated/graphql";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import { Maybe, Rocket, RocketsResult } from '../generated/graphql'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
 
 function RocketDataGrid({ data }: RocketsResult) {
   return (
@@ -23,8 +23,7 @@ function RocketDataGrid({ data }: RocketsResult) {
           {data?.map((row: Maybe<Rocket>) => (
             <TableRow
               key={row?.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
                 {row?.name}
               </TableCell>
@@ -36,7 +35,7 @@ function RocketDataGrid({ data }: RocketsResult) {
         </TableBody>
       </Table>
     </TableContainer>
-  );
+  )
 }
 
-export default RocketDataGrid;
+export default RocketDataGrid
