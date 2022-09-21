@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import Link from '@mui/material/Link'
 
 function RocketDataGrid({ data }: RocketsResult) {
   return (
@@ -29,7 +30,13 @@ function RocketDataGrid({ data }: RocketsResult) {
               </TableCell>
               <TableCell align="left">{row?.country}</TableCell>
               <TableCell align="left">{row?.description}</TableCell>
-              <TableCell align="left">{row?.wikipedia}</TableCell>
+              <TableCell align="left">
+                <Link
+                  href={row?.wikipedia ? (row?.wikipedia as string) : 'N/A'}
+                  target="_blank">
+                  {row?.wikipedia}
+                </Link>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
