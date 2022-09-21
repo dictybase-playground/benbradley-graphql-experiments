@@ -1,22 +1,29 @@
 import { CircularProgress } from '@mui/material'
+import { atom, useSetAtom } from 'jotai'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import RocketDataGrid from '../src/components/rocket-datagrid'
-import { useGetRocketsQuery } from '../src/generated/graphql'
+import { Rocket, useGetRocketsQuery } from '../src/generated/graphql'
 import styles from '../styles/Home.module.css'
+
+export const rocketDataAtom = atom<Rocket[]>([])
 
 const Home: NextPage = () => {
   const { data, loading } = useGetRocketsQuery({
     variables: { limit: 10 }, //used for pagination
   })
 
-  function renderDataGrid() {
+  const setData = useSetAtom(rocketDataAtom)
+  const setFetchedData = (data: Rocket[]) => setData(data)
+
+  const renderDataGrid = () => {
     if (loading) {
       return <CircularProgress />
     }
 
-    return <RocketDataGrid data={data?.rockets} />
+    setFetchedData(data?.rockets as Rocket[])
+    return <RocketDataGrid />
   }
 
   return (

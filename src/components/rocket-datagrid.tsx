@@ -1,4 +1,4 @@
-import { Maybe, Rocket, RocketsResult } from '../generated/graphql'
+import { Rocket } from '../generated/graphql'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -7,8 +7,12 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Link from '@mui/material/Link'
+import { useAtomValue } from 'jotai'
+import { rocketDataAtom } from '../../pages'
 
-function RocketDataGrid({ data }: RocketsResult) {
+const RocketDataGrid = () => {
+  const state = useAtomValue(rocketDataAtom)
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -21,20 +25,20 @@ function RocketDataGrid({ data }: RocketsResult) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data?.map((row: Maybe<Rocket>) => (
+          {state.map((row: Rocket) => (
             <TableRow
-              key={row?.id}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
-                {row?.name}
+                {row.name}
               </TableCell>
-              <TableCell align="left">{row?.country}</TableCell>
-              <TableCell align="left">{row?.description}</TableCell>
+              <TableCell align="left">{row.country}</TableCell>
+              <TableCell align="left">{row.description}</TableCell>
               <TableCell align="left">
                 <Link
-                  href={row?.wikipedia ? (row?.wikipedia as string) : 'N/A'}
+                  href={row.wikipedia ? (row.wikipedia as string) : 'N/A'}
                   target="_blank">
-                  {row?.wikipedia}
+                  {row.wikipedia}
                 </Link>
               </TableCell>
             </TableRow>
