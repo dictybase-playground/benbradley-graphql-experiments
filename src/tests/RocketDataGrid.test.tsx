@@ -1,10 +1,11 @@
 import React from 'react'
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
+import { ApolloError } from '@apollo/client'
 import RocketDataGrid from '../components/RocketDataGrid'
 import { useGetRocketsQuery } from '../generated/graphql'
 import mockRockets from '../mocks/mockRockets'
-import Home from '../../pages'
+import RocketQuery from '../components/RocketQuery'
 
 jest.mock('../generated/graphql', () => {
   // eslint-disable-next-line no-shadow
@@ -32,9 +33,28 @@ describe('components/RocketDataGrid', () => {
       data: mockRockets,
     })
 
-    render(<Home />)
-
+    render(<RocketQuery />)
     expect(screen.getByText(/Mock Rocket 1/)).toBeInTheDocument()
     expect(screen.getByText(/Mock Rocket 2/)).toBeInTheDocument()
+    expect(screen.getByText(/Mock Rocket 3/)).toBeInTheDocument()
+  })
+
+  it('renders loader if component is loading data', () => {
+    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+      loading: true,
+    })
+
+    render(<RocketQuery />)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('renders error if component fails to fetch data', () => {
+    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+      loading: false,
+      error: new ApolloError({}),
+    })
+
+    render(<RocketQuery />)
+    expect(screen.getByText(/error/i)).toBeInTheDocument()
   })
 })
