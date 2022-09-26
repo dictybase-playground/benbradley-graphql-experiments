@@ -35,6 +35,7 @@
     "@swc/jest": "^0.2.22",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.4.0",
+    "@tsconfig/recommended": "^1.0.1",
     "@types/jest": "^29.0.3",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
