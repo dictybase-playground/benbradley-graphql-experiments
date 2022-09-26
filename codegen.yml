@@ -4,11 +4,12 @@ schema:
 documents:
   - "src/queries/*.graphql"
 generates:
-  src/generated/graphql.tsx:
+  src/generated/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
+      - "typescript-msw"
   ./graphql.schema.json:
     plugins:
       - "introspection"
