@@ -3,7 +3,7 @@ import { atom, useSetAtom } from 'jotai'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import RocketDataGrid from '../src/components/rocket-datagrid'
+import RocketDataGrid from '../src/components/RocketDataGrid'
 import { Rocket, useGetRocketsQuery } from '../src/generated/graphql'
 import styles from '../styles/Home.module.css'
 
@@ -11,11 +11,12 @@ export const rocketDataAtom = atom<Rocket[]>([])
 
 const Home: NextPage = () => {
   const { data, loading } = useGetRocketsQuery({
-    variables: { limit: 10 }, //used for pagination
+    // used for pagination
+    variables: { limit: 10 },
   })
 
   const setData = useSetAtom(rocketDataAtom)
-  const setFetchedData = (data: Rocket[]) => setData(data)
+  const setFetchedData = (payload: Rocket[]) => setData(payload)
 
   const renderDataGrid = () => {
     if (loading) {
