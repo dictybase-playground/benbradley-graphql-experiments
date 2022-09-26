@@ -1,4 +1,3 @@
-import { Rocket } from '../generated/graphql'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -8,6 +7,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Link from '@mui/material/Link'
 import { useAtomValue } from 'jotai'
+import { Rocket } from '../generated/graphql'
 import { rocketDataAtom } from '../../pages'
 
 const RocketDataGrid = () => {
