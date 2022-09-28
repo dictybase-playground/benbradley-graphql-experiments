@@ -1,3 +1,4 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { atom } from 'jotai'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -8,6 +9,11 @@ import styles from '../styles/Home.module.css'
 
 export const rocketDataAtom = atom<Rocket[]>([])
 
+const client = new ApolloClient({
+  uri: 'https://api.spacex.land/graphql/',
+  cache: new InMemoryCache(),
+})
+
 const Home: NextPage = () => (
   <div className={styles.container}>
     <Head>
@@ -17,7 +23,9 @@ const Home: NextPage = () => (
     </Head>
 
     <main className={styles.main}>
-      <RocketQuery />
+      <ApolloProvider client={client}>
+        <RocketQuery />
+      </ApolloProvider>
     </main>
 
     <footer className={styles.footer}>
