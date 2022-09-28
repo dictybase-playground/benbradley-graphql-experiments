@@ -1,13 +1,9 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
-import { atom } from 'jotai'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import RocketQuery from '../src/components/RocketQuery'
-import { Rocket } from '../src/generated/graphql'
 import styles from '../styles/Home.module.css'
-
-export const rocketDataAtom = atom<Rocket[]>([])
 
 const client = new ApolloClient({
   uri: 'https://api.spacex.land/graphql/',
