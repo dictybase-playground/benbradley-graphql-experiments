@@ -1,15 +1,17 @@
 import { CircularProgress } from '@mui/material'
 import { atom, useAtomValue } from 'jotai'
 import { Rocket, useGetRocketsQuery } from '../generated/graphql'
+import QueryFilter from './QueryFilter'
 import QuerySizeSelector from './QuerySizeSelector'
 import RocketDataGrid from './RocketDataGrid'
 import RocketQueryError from './RocketQueryError'
 
 interface RocketQueryState {
   limit: number
+  filter: string
 }
 
-export const rocketDataAtom = atom<RocketQueryState>({ limit: 5 })
+export const rocketDataAtom = atom<RocketQueryState>({ limit: 5, filter: '' })
 
 const RocketQuery = () => {
   const { data, loading, error } = useGetRocketsQuery({
@@ -19,6 +21,7 @@ const RocketQuery = () => {
   return (
     <>
       <QuerySizeSelector />
+      <QueryFilter />
       {loading ? <CircularProgress /> : undefined}
       {error ? <RocketQueryError error={error} /> : undefined}
       {data ? (

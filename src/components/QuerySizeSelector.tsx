@@ -17,6 +17,7 @@ const QuerySizeSelector = () => {
   const handleChange = (event: SelectChangeEvent) => {
     setAtomLimit({
       limit: Number.parseInt(event.target.value, 10),
+      filter: state.filter,
     })
   }
 
