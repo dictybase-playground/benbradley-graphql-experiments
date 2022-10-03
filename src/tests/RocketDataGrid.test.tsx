@@ -17,7 +17,7 @@ describe('components/RocketDataGrid', () => {
   beforeEach(() => jest.clearAllMocks())
 
   it('should render a table component', async () => {
-    render(<RocketDataGrid />)
+    render(<RocketDataGrid rocketData={[]} />)
 
     const header = screen.getByRole('columnheader', {
       name: /name/i,
