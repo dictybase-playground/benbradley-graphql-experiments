@@ -16,15 +16,11 @@ const RocketQuery = () => {
   setFetchedData(data?.rockets as Rocket[])
 
   return (
-    <div>
-      {loading ? (
-        <CircularProgress />
-      ) : error ? (
-        <RocketQueryError error={error} />
-      ) : (
-        <RocketDataGrid />
-      )}
-    </div>
+    <>
+      {loading ? <CircularProgress /> : undefined}
+      {error ? <RocketQueryError error={error} /> : undefined}
+      {data ? <RocketDataGrid /> : undefined}
+    </>
   )
 }
 
