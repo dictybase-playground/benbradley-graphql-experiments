@@ -1,22 +1,23 @@
 import Table from '@mui/material/Table'
 import TableContainer from '@mui/material/TableContainer'
 import Paper from '@mui/material/Paper'
-import { useAtomValue } from 'jotai'
 import TableHeaderRow from './RocketTableHeader'
 import RocketTableBody from './RocketTableBody'
-import { rocketDataAtom } from './RocketQuery'
+import { Rocket } from '../generated/graphql'
 
-const RocketDataGrid = () => {
-  const state = useAtomValue(rocketDataAtom)
+interface RocketDataGridProperties {
+  rocketData: Rocket[]
+}
 
-  return (
-    <TableContainer component={Paper}>
+const RocketDataGrid = ({ rocketData }: RocketDataGridProperties) => (
+  <Paper elevation={4}>
+    <TableContainer>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHeaderRow />
-        <RocketTableBody data={state} />
+        <RocketTableBody data={rocketData} />
       </Table>
     </TableContainer>
-  )
-}
+  </Paper>
+)
 
 export default RocketDataGrid

@@ -1,25 +1,29 @@
 import { CircularProgress } from '@mui/material'
-import { atom, useSetAtom } from 'jotai'
+import { atom, useAtomValue } from 'jotai'
 import { Rocket, useGetRocketsQuery } from '../generated/graphql'
+import QuerySizeSelector from './QuerySizeSelector'
 import RocketDataGrid from './RocketDataGrid'
 import RocketQueryError from './RocketQueryError'
 
-export const rocketDataAtom = atom<Rocket[]>([])
+interface RocketQueryState {
+  limit: number
+}
+
+export const rocketDataAtom = atom<RocketQueryState>({ limit: 5 })
 
 const RocketQuery = () => {
   const { data, loading, error } = useGetRocketsQuery({
-    variables: { limit: 10 },
+    variables: { limit: useAtomValue(rocketDataAtom).limit },
   })
-  const setData = useSetAtom(rocketDataAtom)
-  const setFetchedData = (payload: Rocket[]) => setData(payload)
-
-  setFetchedData(data?.rockets as Rocket[])
 
   return (
     <>
+      <QuerySizeSelector />
       {loading ? <CircularProgress /> : undefined}
       {error ? <RocketQueryError error={error} /> : undefined}
-      {data ? <RocketDataGrid /> : undefined}
+      {data ? (
+        <RocketDataGrid rocketData={data.rockets as Rocket[]} />
+      ) : undefined}
     </>
   )
 }
