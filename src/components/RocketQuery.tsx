@@ -11,7 +11,11 @@ interface RocketQueryState {
   filter: string
 }
 
-export const rocketDataAtom = atom<RocketQueryState>({ limit: 5, filter: '' })
+export const maxQuerySize: number = 20
+export const rocketDataAtom = atom<RocketQueryState>({
+  limit: maxQuerySize,
+  filter: '',
+})
 
 const RocketQuery = () => {
   const { data, loading, error } = useGetRocketsQuery({

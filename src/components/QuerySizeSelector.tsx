@@ -7,10 +7,23 @@ import {
 } from '@mui/material'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { ReactNode } from 'react'
-import { rocketDataAtom } from './RocketQuery'
+import { maxQuerySize, rocketDataAtom } from './RocketQuery'
+
+const renderMenuItems = () => {
+  const items: ReactNode[] = []
+
+  for (let index = 1; index <= maxQuerySize; index += 1) {
+    items.push(
+      <MenuItem value={index} key={index}>
+        {index}
+      </MenuItem>,
+    )
+  }
+
+  return items
+}
 
 const QuerySizeSelector = () => {
-  const maxQuerySize: number = 20
   const state = useAtomValue(rocketDataAtom)
   const setAtomLimit = useSetAtom(rocketDataAtom)
 
@@ -19,20 +32,6 @@ const QuerySizeSelector = () => {
       limit: Number.parseInt(event.target.value, 10),
       filter: state.filter,
     })
-  }
-
-  const renderMenuItems = () => {
-    const items: ReactNode[] = []
-
-    for (let index = 1; index <= maxQuerySize; index += 1) {
-      items.push(
-        <MenuItem value={index} key={index}>
-          {index}
-        </MenuItem>,
-      )
-    }
-
-    return items
   }
 
   return (
