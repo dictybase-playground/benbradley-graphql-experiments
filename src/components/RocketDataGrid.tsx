@@ -12,7 +12,7 @@ interface RocketDataGridProperties {
 const RocketDataGrid = ({ rocketData }: RocketDataGridProperties) => (
   <Paper elevation={4}>
     <TableContainer>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHeaderRow />
         <RocketTableBody data={rocketData} />
       </Table>

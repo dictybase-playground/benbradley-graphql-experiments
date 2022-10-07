@@ -1,3 +1,4 @@
+import { makeStyles } from '@material-ui/styles'
 import {
   FormControl,
   InputLabel,
@@ -8,6 +9,12 @@ import {
 import { useAtomValue, useSetAtom } from 'jotai'
 import { ReactNode } from 'react'
 import { maxQuerySize, rocketDataAtom } from './State'
+
+const useStyles = makeStyles({
+  sizeFormControl: {
+    margin: '8px',
+  },
+})
 
 const renderMenuItems = () => {
   const items: ReactNode[] = []
@@ -24,6 +31,7 @@ const renderMenuItems = () => {
 }
 
 const QuerySizeSelector = () => {
+  const classes = useStyles()
   const state = useAtomValue(rocketDataAtom)
   const setAtomLimit = useSetAtom(rocketDataAtom)
 
@@ -35,7 +43,7 @@ const QuerySizeSelector = () => {
   }
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+    <FormControl className={classes.sizeFormControl} size="small">
       <InputLabel id="select-small">Size</InputLabel>
       <Select
         labelId="select-small"
