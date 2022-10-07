@@ -1,7 +1,7 @@
 import { FormControl, Box, TextField } from '@mui/material'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { ChangeEvent } from 'react'
-import { rocketDataAtom } from './RocketQuery'
+import { rocketDataAtom } from './State'
 
 const QueryFilter = () => {
   const state = useAtomValue(rocketDataAtom)

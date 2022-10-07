@@ -1,7 +1,7 @@
 import { Link, TableBody, TableCell, TableRow } from '@mui/material'
 import { useAtomValue } from 'jotai'
 import { Rocket } from '../generated/graphql'
-import { rocketDataAtom } from './RocketQuery'
+import { rocketDataAtom } from './State'
 
 interface RocketTableBodyProperties {
   data: Rocket[]

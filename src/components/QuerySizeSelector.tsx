@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { ReactNode } from 'react'
-import { maxQuerySize, rocketDataAtom } from './RocketQuery'
+import { maxQuerySize, rocketDataAtom } from './State'
 
 const renderMenuItems = () => {
   const items: ReactNode[] = []
