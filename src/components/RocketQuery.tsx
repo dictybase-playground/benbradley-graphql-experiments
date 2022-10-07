@@ -1,12 +1,12 @@
 import { makeStyles } from '@material-ui/styles'
 import { Box, CircularProgress } from '@mui/material'
-import { useAtomValue } from 'jotai'
+import { useAtom } from 'jotai'
 import { Rocket, useGetRocketsQuery } from '../generated/graphql'
 import QueryFilter from './QueryFilter'
 import QuerySizeSelector from './QuerySizeSelector'
 import RocketDataGrid from './RocketDataGrid'
 import RocketQueryError from './RocketQueryError'
-import { rocketDataAtom } from './State'
+import { rocketLimitIntAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
   container: {
@@ -19,8 +19,9 @@ const useStyles = makeStyles({
 
 const RocketQuery = () => {
   const classes = useStyles()
+  const [limit] = useAtom(rocketLimitIntAtom)
   const { data, loading, error } = useGetRocketsQuery({
-    variables: { limit: useAtomValue(rocketDataAtom).limit },
+    variables: { limit },
   })
 
   return (

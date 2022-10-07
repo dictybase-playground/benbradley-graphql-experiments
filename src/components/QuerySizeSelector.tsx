@@ -6,9 +6,8 @@ import {
   MenuItem,
   SelectChangeEvent,
 } from '@mui/material'
-import { useAtomValue, useSetAtom } from 'jotai'
-import { ReactNode } from 'react'
-import { maxQuerySize, rocketDataAtom } from './State'
+import { useAtom } from 'jotai'
+import { limitOptions, rocketLimitAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
   sizeFormControl: {
@@ -16,30 +15,12 @@ const useStyles = makeStyles({
   },
 })
 
-const renderMenuItems = () => {
-  const items: ReactNode[] = []
-
-  for (let index = 1; index <= maxQuerySize; index += 1) {
-    items.push(
-      <MenuItem value={index} key={index}>
-        {index}
-      </MenuItem>,
-    )
-  }
-
-  return items
-}
-
 const QuerySizeSelector = () => {
   const classes = useStyles()
-  const state = useAtomValue(rocketDataAtom)
-  const setAtomLimit = useSetAtom(rocketDataAtom)
+  const [limit, setLimit] = useAtom(rocketLimitAtom)
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAtomLimit({
-      limit: Number.parseInt(event.target.value, 10),
-      filter: state.filter,
-    })
+    setLimit(event.target.value)
   }
 
   return (
@@ -48,10 +29,14 @@ const QuerySizeSelector = () => {
       <Select
         labelId="select-small"
         id="select-small"
-        value={state.limit.toString()}
+        value={limit}
         label="Rows"
         onChange={handleChange}>
-        {renderMenuItems()}
+        {limitOptions.map((option) => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   )
