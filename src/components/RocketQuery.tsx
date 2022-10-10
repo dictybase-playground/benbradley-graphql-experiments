@@ -5,7 +5,7 @@ import { Rocket, useGetRocketsQuery } from '../generated/graphql'
 import QueryFilter from './QueryFilter'
 import QuerySizeSelector from './QuerySizeSelector'
 import RocketDataGrid from './RocketDataGrid'
-import RocketQueryError from './RocketQueryError'
+import RocketQueryError from './QueryError'
 import { rocketLimitIntAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
