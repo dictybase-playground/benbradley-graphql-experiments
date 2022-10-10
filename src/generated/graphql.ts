@@ -1282,6 +1282,32 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']>>
 }
 
+export type GetLaunchesQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>
+  offset?: InputMaybe<Scalars['Int']>
+}>
+
+export type GetLaunchesQuery = {
+  __typename?: 'Query'
+  launches?: Array<{
+    __typename?: 'Launch'
+    id?: string | null
+    launch_date_local?: any | null
+    mission_name?: string | null
+    launch_year?: string | null
+    rocket?: {
+      __typename?: 'LaunchRocket'
+      rocket_name?: string | null
+      rocket_type?: string | null
+    } | null
+    links?: { __typename?: 'LaunchLinks'; wikipedia?: string | null } | null
+    launch_site?: {
+      __typename?: 'LaunchSite'
+      site_name?: string | null
+    } | null
+  } | null> | null
+}
+
 export type GetRocketsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>
 }>
@@ -1299,6 +1325,76 @@ export type GetRocketsQuery = {
   } | null> | null
 }
 
+export const GetLaunchesDocument = gql`
+  query GetLaunches($limit: Int, $offset: Int) {
+    launches(limit: $limit, offset: $offset) {
+      id
+      rocket {
+        rocket_name
+        rocket_type
+      }
+      links {
+        wikipedia
+      }
+      launch_date_local
+      launch_site {
+        site_name
+      }
+      mission_name
+      launch_year
+    }
+  }
+`
+
+/**
+ * __useGetLaunchesQuery__
+ *
+ * To run a query within a React component, call `useGetLaunchesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetLaunchesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetLaunchesQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *   },
+ * });
+ */
+export function useGetLaunchesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetLaunchesQuery,
+    GetLaunchesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetLaunchesQuery, GetLaunchesQueryVariables>(
+    GetLaunchesDocument,
+    options,
+  )
+}
+export function useGetLaunchesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetLaunchesQuery,
+    GetLaunchesQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetLaunchesQuery, GetLaunchesQueryVariables>(
+    GetLaunchesDocument,
+    options,
+  )
+}
+export type GetLaunchesQueryHookResult = ReturnType<typeof useGetLaunchesQuery>
+export type GetLaunchesLazyQueryHookResult = ReturnType<
+  typeof useGetLaunchesLazyQuery
+>
+export type GetLaunchesQueryResult = Apollo.QueryResult<
+  GetLaunchesQuery,
+  GetLaunchesQueryVariables
+>
 export const GetRocketsDocument = gql`
   query GetRockets($limit: Int) {
     rockets(limit: $limit) {
@@ -1360,6 +1456,29 @@ export type GetRocketsQueryResult = Apollo.QueryResult<
   GetRocketsQuery,
   GetRocketsQueryVariables
 >
+
+/**
+ * @param resolver a function that accepts a captured request and may return a mocked response.
+ * @see https://mswjs.io/docs/basics/response-resolver
+ * @example
+ * mockGetLaunchesQuery((req, res, ctx) => {
+ *   const { limit, offset } = req.variables;
+ *   return res(
+ *     ctx.data({ launches })
+ *   )
+ * })
+ */
+export const mockGetLaunchesQuery = (
+  resolver: ResponseResolver<
+    GraphQLRequest<GetLaunchesQueryVariables>,
+    GraphQLContext<GetLaunchesQuery>,
+    any
+  >,
+) =>
+  graphql.query<GetLaunchesQuery, GetLaunchesQueryVariables>(
+    'GetLaunches',
+    resolver,
+  )
 
 /**
  * @param resolver a function that accepts a captured request and may return a mocked response.
