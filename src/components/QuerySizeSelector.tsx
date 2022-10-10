@@ -6,8 +6,8 @@ import {
   MenuItem,
   SelectChangeEvent,
 } from '@mui/material'
-import { useAtom } from 'jotai'
-import { limitOptions, rocketLimitAtom } from '../context/AtomConfigs'
+import { useAtom, useAtomValue } from 'jotai'
+import { queryTypeAtom, rocketLimitAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
   sizeFormControl: {
@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 
 const QuerySizeSelector = () => {
   const classes = useStyles()
+  const { options } = useAtomValue(queryTypeAtom)
   const [limit, setLimit] = useAtom(rocketLimitAtom)
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -32,7 +33,7 @@ const QuerySizeSelector = () => {
         value={limit}
         label="Rows"
         onChange={handleChange}>
-        {limitOptions.map((option) => (
+        {options.map((option) => (
           <MenuItem key={option} value={option}>
             {option}
           </MenuItem>

@@ -1,5 +1,16 @@
 import { atom } from 'jotai'
 
+// Query atom config
+export const queryTypeOptions = [
+  { type: 'launch', options: ['10', '20'] },
+  { type: 'rocket', options: ['1', '2', '3', '4'] },
+]
+
+export const queryTypeAtom = atom(queryTypeOptions[0], (get, set, update) => {
+  set(queryTypeAtom, update)
+  get(queryTypeAtom)
+})
+
 // Rocket Query atom configs
 export const limitOptions = ['1', '2', '3', '4']
 
@@ -8,10 +19,9 @@ export interface RocketQueryState {
 }
 
 export const rocketLimitAtom = atom(
-  limitOptions[limitOptions.length - 1],
+  queryTypeOptions[0].options[0],
   (get, set, update) => {
     set(rocketLimitAtom, update)
-    get(rocketLimitAtom)
   },
 )
 
