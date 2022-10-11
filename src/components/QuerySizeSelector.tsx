@@ -7,7 +7,7 @@ import {
   SelectChangeEvent,
 } from '@mui/material'
 import { useAtom, useAtomValue } from 'jotai'
-import { queryTypeAtom, rocketLimitAtom } from '../context/AtomConfigs'
+import { queryLimitAtom, queryTypeAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
   sizeFormControl: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 const QuerySizeSelector = () => {
   const classes = useStyles()
   const { options } = useAtomValue(queryTypeAtom)
-  const [limit, setLimit] = useAtom(rocketLimitAtom)
+  const [limit, setLimit] = useAtom(queryLimitAtom)
 
   const handleChange = (event: SelectChangeEvent) => {
     setLimit(event.target.value)
