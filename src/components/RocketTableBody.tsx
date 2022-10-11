@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/styles'
 import { Link, TableBody, TableCell, TableRow } from '@mui/material'
 import { useAtomValue } from 'jotai'
 import { Rocket } from '../generated/graphql'
-import { rocketFilterAtom } from '../context/AtomConfigs'
+import { queryFilterAtom } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
   tableRow: {
@@ -16,7 +16,7 @@ interface RocketTableBodyProperties {
 
 const RocketTableBody = ({ data }: RocketTableBodyProperties) => {
   const classes = useStyles()
-  const state = useAtomValue(rocketFilterAtom)
+  const state = useAtomValue(queryFilterAtom)
 
   return (
     <TableBody>

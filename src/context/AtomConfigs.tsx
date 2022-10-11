@@ -1,9 +1,23 @@
 import { atom } from 'jotai'
 
 // Query atom config
-export const queryTypeOptions = [
-  { type: 'launch', options: ['5', '10', '20', '40'] },
-  { type: 'rocket', options: ['1', '2', '3', '4'] },
+export type QueryTypeOptions = {
+  type: string
+  options: string[]
+  headers: string[]
+}
+
+export const queryTypeOptions: QueryTypeOptions[] = [
+  {
+    type: 'launch',
+    options: ['5', '10', '20', '40'],
+    headers: ['Mission Name', 'Rocket', 'Launch Site', 'Year', 'Wikipedia'],
+  },
+  {
+    type: 'rocket',
+    options: ['1', '2', '3', '4'],
+    headers: ['Name', 'Country', 'Description', 'Wikipedia'],
+  },
 ]
 
 export const queryTypeAtom = atom(queryTypeOptions[0], (get, set, update) => {
@@ -29,7 +43,7 @@ export const queryLimitIntAtom = atom((get) =>
   Number.parseInt(get(queryLimitAtom), 10),
 )
 
-export const rocketFilterAtom = atom<RocketQueryState>({
+export const queryFilterAtom = atom<RocketQueryState>({
   filter: '',
 })
 

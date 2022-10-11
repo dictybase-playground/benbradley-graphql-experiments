@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/styles'
 import { Link, TableBody, TableCell, TableRow } from '@mui/material'
 import { useAtomValue } from 'jotai'
-import { rocketFilterAtom } from '../context/AtomConfigs'
+import { queryFilterAtom } from '../context/AtomConfigs'
 import { Launch } from '../generated/graphql'
 
 const useStyles = makeStyles({
@@ -16,7 +16,7 @@ interface LaunchTableBodyProperties {
 
 const LaunchTableBody = ({ data }: LaunchTableBodyProperties) => {
   const classes = useStyles()
-  const state = useAtomValue(rocketFilterAtom)
+  const state = useAtomValue(queryFilterAtom)
 
   return (
     <TableBody>

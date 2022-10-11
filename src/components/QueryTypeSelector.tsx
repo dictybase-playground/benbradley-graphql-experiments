@@ -10,7 +10,7 @@ import { useAtom, useSetAtom } from 'jotai'
 import {
   queryTypeAtom,
   queryTypeOptions,
-  rocketLimitAtom,
+  queryLimitAtom,
 } from '../context/AtomConfigs'
 
 const useStyles = makeStyles({
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 const QuerySelector = () => {
   const classes = useStyles()
   const [queryType, setQueryType] = useAtom(queryTypeAtom)
-  const setLimit = useSetAtom(rocketLimitAtom)
+  const setLimit = useSetAtom(queryLimitAtom)
 
   const handleChange = (event: SelectChangeEvent) => {
     setQueryType(

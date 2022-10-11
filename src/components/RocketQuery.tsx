@@ -3,10 +3,10 @@ import { useAtom } from 'jotai'
 import { Rocket, useGetRocketsQuery } from '../generated/graphql'
 import RocketDataGrid from './RocketDataGrid'
 import RocketQueryError from './QueryError'
-import { rocketLimitIntAtom } from '../context/AtomConfigs'
+import { queryLimitIntAtom } from '../context/AtomConfigs'
 
 const RocketQuery = () => {
-  const [limit] = useAtom(rocketLimitIntAtom)
+  const [limit] = useAtom(queryLimitIntAtom)
   const { data, loading, error } = useGetRocketsQuery({
     variables: { limit },
   })
