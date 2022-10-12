@@ -10,6 +10,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     margin: '8px',
   },
+  pageCount: {
+    color: 'black',
+  },
 })
 
 interface PaginationProperties {
@@ -23,7 +26,6 @@ const PaginationControl = ({
 }: PaginationProperties) => {
   const classes = useStyles()
   const [page, setPage] = useAtom(currentPageAtom)
-  const pageCount = Math.ceil(totalItems / pageItemLimit)
 
   const handlePreviousPage = () => {
     setPage((previous) => previous - 1)
@@ -38,9 +40,7 @@ const PaginationControl = ({
       <Button disabled={page === 1} onClick={handlePreviousPage}>
         Previous
       </Button>
-      <Typography>
-        {page} / {pageCount}
-      </Typography>
+      <Typography className={classes.pageCount}>{page}</Typography>
       <Button onClick={handleNextPage}>Next</Button>
     </Box>
   )

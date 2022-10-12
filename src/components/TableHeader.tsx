@@ -10,7 +10,9 @@ const TableHeader = ({ headers }: TableHeaderProperties) => (
   <TableHead>
     <TableRow>
       {headers.map((header) => (
-        <TableCell align="left">{header}</TableCell>
+        <TableCell key={header} align="left">
+          {header}
+        </TableCell>
       ))}
     </TableRow>
   </TableHead>
