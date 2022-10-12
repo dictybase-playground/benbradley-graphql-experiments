@@ -35,7 +35,9 @@ const PaginationControl = ({
 
   return (
     <Box className={classes.pagination}>
-      <Button onClick={handlePreviousPage}>Previous</Button>
+      <Button disabled={page === 1} onClick={handlePreviousPage}>
+        Previous
+      </Button>
       <Typography>
         {page} / {pageCount}
       </Typography>
