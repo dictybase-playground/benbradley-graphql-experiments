@@ -1,4 +1,5 @@
 import { atom } from 'jotai'
+import { atomWithImmer } from 'jotai/immer'
 
 // Query atom config
 export type QueryTypeOptions = {
@@ -43,3 +44,5 @@ export const queryLimitIntAtom = atom((get) =>
 export const queryFilterAtom = atom<RocketQueryState>({
   filter: '',
 })
+
+export const currentPageAtom = atomWithImmer(1)

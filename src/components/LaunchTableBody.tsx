@@ -29,9 +29,7 @@ const LaunchTableBody = ({ data }: LaunchTableBodyProperties) => {
         .map((row: Launch) => (
           <TableRow key={row.id} className={classes.tableRow}>
             <TableCell align="left">{row.mission_name}</TableCell>
-            <TableCell component="th" scope="row">
-              {row.rocket?.rocket_name}
-            </TableCell>
+            <TableCell align="left">{row.rocket?.rocket_name}</TableCell>
             <TableCell align="left">{row.launch_site?.site_name}</TableCell>
             <TableCell align="left">{row.launch_year}</TableCell>
             <TableCell align="left">
