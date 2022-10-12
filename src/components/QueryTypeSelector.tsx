@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 })
 
-const QuerySelector = () => {
+const QueryTypeSelector = () => {
   const classes = useStyles()
   const [queryType, setQueryType] = useAtom(queryTypeAtom)
   const setLimit = useSetAtom(queryLimitAtom)
@@ -54,4 +54,4 @@ const QuerySelector = () => {
   )
 }
 
-export default QuerySelector
+export default QueryTypeSelector

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles'
 import { FormControl, TextField } from '@mui/material'
-import { useAtomValue, useSetAtom } from 'jotai'
+import { useAtom } from 'jotai'
 import { ChangeEvent } from 'react'
 import { queryFilterAtom } from '../context/AtomConfigs'
 
@@ -12,12 +12,11 @@ const useStyles = makeStyles({
 
 const QueryFilter = () => {
   const classes = useStyles()
-  const state = useAtomValue(queryFilterAtom)
-  const setAtomFilter = useSetAtom(queryFilterAtom)
+  const [state, setFilter] = useAtom(queryFilterAtom)
 
   const handleFilterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setAtomFilter({
-      filter: event.target.value,
+    setFilter({
+      filter: event.target.value.toString(),
     })
   }
 

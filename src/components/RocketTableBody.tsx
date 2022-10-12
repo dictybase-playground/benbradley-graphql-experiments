@@ -22,7 +22,9 @@ const RocketTableBody = ({ data }: RocketTableBodyProperties) => {
     <TableBody>
       {data
         .filter((element: Rocket) =>
-          element.name?.toLowerCase().includes(state.filter.toLowerCase()),
+          element.name
+            ?.toLowerCase()
+            .includes(state.filter.toString().toLowerCase()),
         )
         .map((row: Rocket) => (
           <TableRow key={row.id} className={classes.tableRow}>
