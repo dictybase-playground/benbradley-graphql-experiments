@@ -1,15 +1,23 @@
 import { CircularProgress } from '@mui/material'
 import { useAtom, useAtomValue } from 'jotai'
-import { queryLimitIntAtom, queryTypeAtom } from '../context/AtomConfigs'
+import {
+  currentPageAtom,
+  queryLimitIntAtom,
+  queryTypeAtom,
+} from '../context/AtomConfigs'
 import { Launch, useGetLaunchesQuery } from '../generated/graphql'
 import LaunchDataGrid from './LaunchDataGrid'
+import PaginationControl from './PaginationControl'
 import QueryError from './QueryError'
+
+const pageSize = 10
 
 const LaunchQuery = () => {
   const [limit] = useAtom(queryLimitIntAtom)
+  const [page] = useAtom(currentPageAtom)
   const { headers } = useAtomValue(queryTypeAtom)
   const { data, loading, error } = useGetLaunchesQuery({
-    variables: { limit },
+    variables: { limit, offset: page * limit },
   })
 
   return (
@@ -17,10 +25,16 @@ const LaunchQuery = () => {
       {loading ? <CircularProgress /> : undefined}
       {error ? <QueryError error={error} /> : undefined}
       {data ? (
-        <LaunchDataGrid
-          launchData={data.launches as Launch[]}
-          launchHeaders={headers}
-        />
+        <>
+          <PaginationControl
+            pageItemLimit={pageSize}
+            totalItems={data.launches?.length as number}
+          />
+          <LaunchDataGrid
+            launchData={data.launches as Launch[]}
+            launchHeaders={headers}
+          />
+        </>
       ) : undefined}
     </>
   )
