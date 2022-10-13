@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/styles'
 import {
   FormControl,
   InputLabel,
@@ -9,14 +8,7 @@ import {
 import { useAtom, useAtomValue } from 'jotai'
 import { queryLimitAtom, queryTypeAtom } from '../context/AtomConfigs'
 
-const useStyles = makeStyles({
-  sizeFormControl: {
-    margin: '8px',
-  },
-})
-
 const QuerySizeSelector = () => {
-  const classes = useStyles()
   const { options } = useAtomValue(queryTypeAtom)
   const [limit, setLimit] = useAtom(queryLimitAtom)
 
@@ -25,7 +17,7 @@ const QuerySizeSelector = () => {
   }
 
   return (
-    <FormControl className={classes.sizeFormControl} size="small">
+    <FormControl size="small">
       <InputLabel id="select-small">Size</InputLabel>
       <Select
         labelId="select-small"

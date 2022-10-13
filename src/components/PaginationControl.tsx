@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     alignItems: 'center',
     margin: '8px',
+    justifyContent: 'space-between',
   },
   pageCount: {
     color: 'black',
