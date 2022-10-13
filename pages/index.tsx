@@ -2,7 +2,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import RocketQuery from '../src/components/RocketQuery'
+import Main from '../src/components/Main'
 import styles from '../styles/Home.module.css'
 
 const client = new ApolloClient({
@@ -20,7 +20,7 @@ const Home: NextPage = () => (
 
     <main className={styles.main}>
       <ApolloProvider client={client}>
-        <RocketQuery />
+        <Main />
       </ApolloProvider>
     </main>
 

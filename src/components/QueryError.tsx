@@ -1,12 +1,12 @@
 import { ApolloError } from '@apollo/client'
 import { Typography } from '@mui/material'
 
-interface RocketQueryErrorProperties {
+interface QueryErrorProperties {
   error: ApolloError
 }
 
-const RocketQueryError = ({ error }: RocketQueryErrorProperties) => (
+const QueryError = ({ error }: QueryErrorProperties) => (
   <Typography>{`Error: ${error.message}`}</Typography>
 )
 
-export default RocketQueryError
+export default QueryError

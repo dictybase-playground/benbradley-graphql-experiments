@@ -1,23 +1,48 @@
 import { atom } from 'jotai'
+import { atomWithImmer } from 'jotai/immer'
 
-export const limitOptions = ['1', '2', '3', '4']
+// Query atom config
+export type QueryTypeOptions = {
+  type: string
+  options: string[]
+  headers: string[]
+}
+
+export const queryTypeOptions: QueryTypeOptions[] = [
+  {
+    type: 'launch',
+    options: ['5', '10', '20', '40'],
+    headers: ['Mission Name', 'Rocket', 'Launch Site', 'Year', 'Wikipedia'],
+  },
+  {
+    type: 'rocket',
+    options: ['1', '2', '3', '4'],
+    headers: ['Name', 'Country', 'Description', 'Wikipedia'],
+  },
+]
+
+export const queryTypeAtom = atom(queryTypeOptions[0], (get, set, update) => {
+  set(queryTypeAtom, update)
+  get(queryTypeAtom)
+})
 
 export interface RocketQueryState {
   filter: string
 }
 
-export const rocketLimitAtom = atom(
-  limitOptions[limitOptions.length - 1],
+export const queryLimitAtom = atom(
+  queryTypeOptions[0].options[0],
   (get, set, update) => {
-    set(rocketLimitAtom, update)
-    get(rocketLimitAtom)
+    set(queryLimitAtom, update)
   },
 )
 
-export const rocketLimitIntAtom = atom((get) =>
-  Number.parseInt(get(rocketLimitAtom), 10),
+export const queryLimitIntAtom = atom((get) =>
+  Number.parseInt(get(queryLimitAtom), 10),
 )
 
-export const rocketFilterAtom = atom<RocketQueryState>({
+export const queryFilterAtom = atom<RocketQueryState>({
   filter: '',
 })
+
+export const currentPageAtom = atomWithImmer(1)
