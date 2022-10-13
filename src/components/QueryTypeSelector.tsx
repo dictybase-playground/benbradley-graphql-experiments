@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/styles'
 import {
   SelectChangeEvent,
   FormControl,
@@ -13,14 +12,7 @@ import {
   queryLimitAtom,
 } from '../context/AtomConfigs'
 
-const useStyles = makeStyles({
-  sizeFormControl: {
-    margin: '8px',
-  },
-})
-
 const QueryTypeSelector = () => {
-  const classes = useStyles()
   const [queryType, setQueryType] = useAtom(queryTypeAtom)
   const setLimit = useSetAtom(queryLimitAtom)
 
@@ -36,7 +28,7 @@ const QueryTypeSelector = () => {
   }
 
   return (
-    <FormControl className={classes.sizeFormControl} size="small">
+    <FormControl size="small">
       <InputLabel id="select-small">Query</InputLabel>
       <Select
         labelId="select-small"
