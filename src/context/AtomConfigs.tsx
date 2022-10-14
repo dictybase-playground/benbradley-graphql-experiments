@@ -16,7 +16,7 @@ export const queryTypeOptions: QueryTypeOptions[] = [
   },
   {
     type: 'rocket',
-    options: ['1', '2', '3', '4'],
+    options: ['4', '3', '2', '1'],
     headers: ['Name', 'Country', 'Description', 'Wikipedia'],
   },
 ]

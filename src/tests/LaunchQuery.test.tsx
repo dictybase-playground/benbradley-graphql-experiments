@@ -4,53 +4,53 @@ import '@testing-library/jest-dom'
 import { Matcher, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ApolloError } from '@apollo/client'
-import { useGetRocketsQuery } from '../generated/graphql'
-import mockRockets from '../mocks/mockRockets'
-import RocketQuery from '../components/RocketQuery'
+import { useGetLaunchesQuery } from '../generated/graphql'
 import QueryFilter from '../components/QueryFilter'
+import LaunchQuery from '../components/LaunchQuery'
+import mockLaunches from '../mocks/mockLaunches'
 
 jest.mock('../generated/graphql', () => {
   // eslint-disable-next-line no-shadow
-  const useGetRocketsQuery = jest.fn()
-  return { useGetRocketsQuery }
+  const useGetLaunchesQuery = jest.fn()
+  return { useGetLaunchesQuery }
 })
 
-describe('components/RocketQuery', () => {
+describe('components/LaunchQuery', () => {
   beforeEach(() => jest.clearAllMocks())
 
   const renderComponents = () => {
     render(<QueryFilter />)
-    render(<RocketQuery />)
+    render(<LaunchQuery />)
   }
 
-  it('renders rockets', () => {
-    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+  it('renders launch data', () => {
+    ;(useGetLaunchesQuery as jest.Mock).mockReturnValue({
       loading: false,
       error: false,
-      data: mockRockets,
+      data: mockLaunches,
     })
 
-    render(<RocketQuery />)
-    const rocket1 = screen.getByText(
-      mockRockets.rockets?.at(0)?.name as Matcher,
+    render(<LaunchQuery />)
+    const launch1 = screen.getByText(
+      mockLaunches.launches?.at(0)?.mission_name as Matcher,
     )
-    const rocket2 = screen.getByText(
-      mockRockets.rockets?.at(1)?.name as Matcher,
+    const launch2 = screen.getByText(
+      mockLaunches.launches?.at(1)?.mission_name as Matcher,
     )
-    const rocket3 = screen.getByText(
-      mockRockets.rockets?.at(2)?.name as Matcher,
+    const launch3 = screen.getByText(
+      mockLaunches.launches?.at(2)?.mission_name as Matcher,
     )
 
-    expect(rocket1).toBeInTheDocument()
-    expect(rocket2).toBeInTheDocument()
-    expect(rocket3).toBeInTheDocument()
+    expect(launch1).toBeInTheDocument()
+    expect(launch2).toBeInTheDocument()
+    expect(launch3).toBeInTheDocument()
   })
 
-  it('should filter data from input', async () => {
-    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+  it('should filter launch data from input', async () => {
+    ;(useGetLaunchesQuery as jest.Mock).mockReturnValue({
       loading: false,
       error: false,
-      data: mockRockets,
+      data: mockLaunches,
     })
 
     renderComponents()
@@ -58,13 +58,13 @@ describe('components/RocketQuery', () => {
       name: /search/i,
     })
     const unfilteredElement = screen.getByText(
-      mockRockets.rockets?.at(0)?.name as Matcher,
+      mockLaunches.launches?.at(0)?.mission_name as Matcher,
     )
     const filteredElement1 = screen.getByText(
-      mockRockets.rockets?.at(1)?.name as Matcher,
+      mockLaunches.launches?.at(1)?.mission_name as Matcher,
     )
     const filteredElement2 = screen.getByText(
-      mockRockets.rockets?.at(2)?.name as Matcher,
+      mockLaunches.launches?.at(2)?.mission_name as Matcher,
     )
 
     expect(unfilteredElement).toBeInTheDocument()
@@ -73,7 +73,7 @@ describe('components/RocketQuery', () => {
 
     await userEvent.type(
       inputComponent,
-      mockRockets.rockets?.at(0)?.name as string,
+      mockLaunches.launches?.at(0)?.mission_name as string,
     )
 
     expect(unfilteredElement).toBeInTheDocument()
@@ -82,21 +82,21 @@ describe('components/RocketQuery', () => {
   })
 
   it('renders loader if component is loading data', () => {
-    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+    ;(useGetLaunchesQuery as jest.Mock).mockReturnValue({
       loading: true,
     })
 
-    render(<RocketQuery />)
+    render(<LaunchQuery />)
     expect(screen.getByRole('progressbar')).toBeInTheDocument()
   })
 
   it('renders error if component fails to fetch data', () => {
-    ;(useGetRocketsQuery as jest.Mock).mockReturnValue({
+    ;(useGetLaunchesQuery as jest.Mock).mockReturnValue({
       loading: false,
       error: new ApolloError({}),
     })
 
-    render(<RocketQuery />)
+    render(<LaunchQuery />)
     expect(screen.getByText(/error/i)).toBeInTheDocument()
   })
 })
