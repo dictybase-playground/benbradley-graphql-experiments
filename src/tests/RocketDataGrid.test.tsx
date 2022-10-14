@@ -31,15 +31,21 @@ const testRockets: Rocket[] = [
   },
 ]
 
+const testHeaders: string[] = ['name', 'country', 'description']
+
 describe('components/RocketDataGrid', () => {
   it('should render a table component', () => {
-    render(<RocketDataGrid rocketData={testRockets} />)
+    render(
+      <RocketDataGrid rocketHeaders={testHeaders} rocketData={testRockets} />,
+    )
 
     expect(screen.getByRole('table')).toBeInTheDocument()
   })
 
   it('should render correct amount of rows', () => {
-    render(<RocketDataGrid rocketData={testRockets} />)
+    render(
+      <RocketDataGrid rocketHeaders={testHeaders} rocketData={testRockets} />,
+    )
 
     expect(screen.getAllByRole('row')).toHaveLength(testRockets.length + 1)
   })

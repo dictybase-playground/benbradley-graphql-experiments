@@ -3,17 +3,21 @@ import TableContainer from '@mui/material/TableContainer'
 import Paper from '@mui/material/Paper'
 import RocketTableBody from './RocketTableBody'
 import { Rocket } from '../generated/graphql'
-import RocketTableHeader from './RocketTableHeader'
+import TableHeader from './TableHeader'
 
 interface RocketDataGridProperties {
   rocketData: Rocket[]
+  rocketHeaders: string[]
 }
 
-const RocketDataGrid = ({ rocketData }: RocketDataGridProperties) => (
+const RocketDataGrid = ({
+  rocketData,
+  rocketHeaders,
+}: RocketDataGridProperties) => (
   <Paper elevation={4}>
     <TableContainer>
       <Table aria-label="simple table">
-        <RocketTableHeader />
+        <TableHeader headers={rocketHeaders} />
         <RocketTableBody data={rocketData} />
       </Table>
     </TableContainer>
