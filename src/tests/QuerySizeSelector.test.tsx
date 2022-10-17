@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { act, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import QuerySizeSelector from '../components/QuerySizeSelector'
 import '@testing-library/jest-dom'
@@ -30,5 +30,32 @@ describe('components/QuerySizeSelector', () => {
         name: /5/i,
       }),
     ).toBeInTheDocument()
+    expect(
+      screen.getByRole('option', {
+        name: /10/i,
+      }),
+    ).toBeInTheDocument()
+  })
+
+  it('should update limit when an option is selected', async () => {
+    renderComponent()
+
+    const sizeDropdown = screen.getByRole('button', {
+      name: /size/i,
+    })
+
+    await userEvent.click(sizeDropdown)
+
+    await act(async () =>
+      waitFor(() =>
+        userEvent.click(
+          screen.getByRole('option', {
+            name: /10/i,
+          }),
+        ),
+      ),
+    )
+
+    expect(sizeDropdown).toHaveTextContent(/10/i)
   })
 })
