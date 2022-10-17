@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
+import { act } from 'react-dom/test-utils'
 import QueryTypeSelector from '../components/QueryTypeSelector'
 
 describe('components/QueryTypeSelector', () => {
@@ -19,11 +20,11 @@ describe('components/QueryTypeSelector', () => {
   it('should render type option when clicked', async () => {
     renderComponent()
 
-    const sizeDropdown = screen.getByRole('button', {
+    const typeDropdown = screen.getByRole('button', {
       name: /query/i,
     })
 
-    await userEvent.click(sizeDropdown)
+    await userEvent.click(typeDropdown)
 
     expect(
       screen.getByRole('option', {
@@ -35,5 +36,27 @@ describe('components/QueryTypeSelector', () => {
         name: /rocket/i,
       }),
     ).toBeInTheDocument()
+  })
+
+  it('should update query type when an option is selected', async () => {
+    renderComponent()
+
+    const typeDropdown = screen.getByRole('button', {
+      name: /query/i,
+    })
+
+    await userEvent.click(typeDropdown)
+
+    await act(async () =>
+      waitFor(() =>
+        userEvent.click(
+          screen.getByRole('option', {
+            name: /rocket/i,
+          }),
+        ),
+      ),
+    )
+
+    expect(typeDropdown).toHaveTextContent(/rocket/i)
   })
 })

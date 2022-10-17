@@ -37,7 +37,7 @@ describe('components/QuerySizeSelector', () => {
     ).toBeInTheDocument()
   })
 
-  it('should update limit when an option is selected', async () => {
+  it('should update size when an option is selected', async () => {
     renderComponent()
 
     const sizeDropdown = screen.getByRole('button', {
