@@ -32,7 +32,7 @@ describe('components/QueryFilter', () => {
     expect(nextButton).toBeInTheDocument()
   })
 
-  it('increments page number when clicking next button', async () => {
+  it('increments and decrements page number when clicking next/prev buttons', async () => {
     ;(useGetLaunchesQuery as jest.Mock).mockReturnValue({
       loading: false,
       error: false,
@@ -57,5 +57,10 @@ describe('components/QueryFilter', () => {
 
     expect(previousButton).toBeEnabled()
     expect(screen.getByText(/2/)).toBeInTheDocument()
+
+    await userEvent.click(previousButton)
+
+    expect(previousButton).toBeDisabled()
+    expect(screen.getByText(/1/)).toBeInTheDocument()
   })
 })
