@@ -12,9 +12,7 @@ const testLaunches: Launch[] = [
       rocket_name: 'RU Rocket',
       rocket_type: 'v1.0',
     },
-    links: {
-      wikipedia: 'wikilink',
-    },
+    links: {},
     launch_date_local: '2022-01-06T14:06:00-04:00',
     launch_site: {
       site_name: 'CCAFS SLC 40',
@@ -95,5 +93,20 @@ describe('components/RocketDataGrid', () => {
         name: /mission/i,
       }),
     ).toBeInTheDocument()
+  })
+
+  it('should render link component with N/A href if wiki link is not present in data', () => {
+    render(
+      <LaunchDataGrid
+        launchHeaders={testHeaders}
+        launchData={testLaunches.slice(0, 1)}
+      />,
+    )
+
+    expect(
+      screen.getByRole('link', {
+        name: '',
+      }),
+    ).toHaveAttribute('href', 'N/A')
   })
 })

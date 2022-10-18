@@ -8,7 +8,6 @@ const testRockets: Rocket[] = [
   {
     id: '1',
     name: 'RU Rocket',
-    wikipedia: 'wikilink',
     description: 'Description',
     country: 'Russia',
     active: true,
@@ -48,5 +47,20 @@ describe('components/RocketDataGrid', () => {
     )
 
     expect(screen.getAllByRole('row')).toHaveLength(testRockets.length + 1)
+  })
+
+  it('should render link component with N/A href if wiki link is not present in data', () => {
+    render(
+      <RocketDataGrid
+        rocketHeaders={testHeaders}
+        rocketData={testRockets.slice(0, 1)}
+      />,
+    )
+
+    expect(
+      screen.getByRole('link', {
+        name: '',
+      }),
+    ).toHaveAttribute('href', 'N/A')
   })
 })
