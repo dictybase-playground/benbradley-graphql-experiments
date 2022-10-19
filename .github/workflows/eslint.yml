@@ -1,7 +1,12 @@
 name: Linting with eslint
 on: pull_request
+
+env:
+  ENABLE: ${{ false }}
+
 jobs:
   lint:
+    if: ${{ env.ENABLE }}
     name: lint
     runs-on: ubuntu-latest
     steps:
